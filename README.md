@@ -261,3 +261,21 @@ Declared here so that no gap is silent (audit 2026-07-20, section E):
   tabulated. The mistake is instructive -- the report is a 1990 scan whose OCR renders the values
   with a thousands space ("9 272") and one measured load with a capital O for the final zero
   ("579O"), so a plain text search for the digits finds nothing and reads as absence.
+
+## The verification layer, as a component
+
+`fe/verification.py` is the deterministic screen the paper's Section on silent failures describes:
+it takes a design together with the evidence gathered about it and returns `ok`, `suspect` or
+`rejected` with the reasons attached. A control that did not run leaves the verdict at `suspect`
+rather than at `ok`, so a design nothing was checked on cannot pass.
+
+Two experiments exercise it, and both ship their artefacts:
+
+- `experiments/exp30_fault_injection.py` injects, on purpose, the fault each control is meant to
+  catch, and records whether the control fires. **One result is negative and reported as such:** the
+  weak-material chop does not reproduce on the panel of this study, so its control is verified on the
+  documented signature rather than end to end.
+- `experiments/exp31_screen_delivered.py` runs the screen on the six delivered designs.
+
+The screen costs two buckling solves per design, for the load-scaling invariant, so it screens
+delivered designs rather than every candidate the search evaluates.

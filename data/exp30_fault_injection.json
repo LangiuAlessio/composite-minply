@@ -1,0 +1,94 @@
+{
+ "nota": "Iniezione di guasto sui controlli del verification layer. La regola, fissata prima del run: un controllo che non rileva il suo guasto si riporta come negativo.",
+ "ccx": "/opt/homebrew/bin/ccx_2.21",
+ "calibrazione_layup": {
+  "caso": "c1_axial",
+  "N": 24,
+  "sano_pct": 35.8,
+  "col_chop_pct": 4.0
+ },
+ "rilevati": 2,
+ "totale": 3,
+ "falsi_allarmi": 0,
+ "guasti_non_riprodotti": [
+  "F1 weak-material chop"
+ ],
+ "non_iniettabile": {
+  "failure_mode": "F3 singolarita di bordo libero",
+  "perche": "non e un rilevatore a runtime ma la ragione per cui il criterio di delaminazione e mediato su una banda"
+ },
+ "prove": [
+  {
+   "failure_mode": "F1 weak-material chop",
+   "controllo": "risposta al layup",
+   "sano": {
+    "esito": "ok",
+    "bf_a": 0.7401168,
+    "bf_b": 1.152745,
+    "delta_pct": 35.7953
+   },
+   "iniettato": {
+    "esito": "ok",
+    "bf_a": 0.9674704,
+    "bf_b": 2.052548,
+    "delta_pct": 52.8649
+   },
+   "rilevato": false,
+   "guasto_riprodotto": false,
+   "controllo_verificato_su_firma_documentata": {
+    "fonte": "exp15_panelA_weakchop (pannello industriale, deck non ridistribuito)",
+    "valori": [
+     0.95,
+     0.99
+    ],
+    "esito": "rejected",
+    "bf_a": 0.95,
+    "bf_b": 0.99,
+    "delta_pct": 4.0404
+   },
+   "sano_passa": true,
+   "nota": "sul deck della campagna il chop non produce la patologia: i fattori restano separati e il controllo giustamente non scatta. Il guasto e deck-dipendente."
+  },
+  {
+   "failure_mode": "F2/F4 autovalore spurio o secondo modo",
+   "controllo": "invariante di scala BLF x |F|",
+   "sano": {
+    "esito": "ok",
+    "prodotti": [
+     6243.5976,
+     6243.6
+    ],
+    "dispersione_pct": 3.8e-05
+   },
+   "iniettato": {
+    "esito": "rejected",
+    "prodotti": [
+     6243.5976,
+     699.4518
+    ],
+    "dispersione_pct": 792.64158
+   },
+   "rilevato": true,
+   "sano_passa": true,
+   "nota": "carico di riferimento portato a 0.25x il nominale, sotto la soglia oltre la quale il solutore cambia autovalore (misurata fra 0.5x e 1.0x su questo deck)"
+  },
+  {
+   "failure_mode": "F5 record scartati dal lettore",
+   "controllo": "copertura",
+   "sano": {
+    "esito": "ok",
+    "letti": 14091,
+    "attesi": 14091,
+    "frazione": 1.0
+   },
+   "iniettato": {
+    "esito": "rejected",
+    "letti": 11596,
+    "attesi": 14091,
+    "frazione": 0.822937
+   },
+   "rilevato": true,
+   "sano_passa": true
+  }
+ ]
+}

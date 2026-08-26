@@ -1,0 +1,322 @@
+{
+ "nota": "Verdetto dello screen deterministico sui sei design consegnati. La risposta al layup e un controllo sul MODELLO, misurata una volta e valida per tutti e sei.",
+ "layup_response_modello": {
+  "bf_0_24": 0.7401168,
+  "bf_90_24": 1.152745
+ },
+ "ccx": "/opt/homebrew/bin/ccx_2.21",
+ "limiti": {
+  "disp": {
+   "soglia": 1.1
+  },
+  "sx": {
+   "soglia": 700.0
+  },
+  "sy": {
+   "soglia": 700.0
+  },
+  "Q": {
+   "soglia": 1.0
+  }
+ },
+ "esiti": {
+  "ok": 6
+ },
+ "dispersione_invariante_peggiore_pct": 2.4e-05,
+ "rows": [
+  {
+   "alphabet": "set1",
+   "case": "c1_axial",
+   "n_plies": 48,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 2e-05,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      11792.6904,
+      11792.688
+     ],
+     "dispersione_pct": 2e-05
+    },
+    "coverage": {
+     "letti": 11319,
+     "attesi": 11319,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.4173833720981227,
+      "sx": 376.029,
+      "sy": 268.695,
+      "Q": 0.00246728607030924
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "alphabet": "set1",
+   "case": "c2_side",
+   "n_plies": 50,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 2.4e-05,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      20366.6295,
+      20366.6344
+     ],
+     "dispersione_pct": 2.4e-05
+    },
+    "coverage": {
+     "letti": 11781,
+     "attesi": 11781,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.4072647024847599,
+      "sx": 404.337,
+      "sy": 293.622,
+      "Q": 0.0023271796904560165
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "alphabet": "set1",
+   "case": "c3_combo",
+   "n_plies": 54,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 0.0,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      27374.272,
+      27374.272
+     ],
+     "dispersione_pct": 0.0
+    },
+    "coverage": {
+     "letti": 12705,
+     "attesi": 12705,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.3718707212056362,
+      "sx": 392.075,
+      "sy": 279.096,
+      "Q": 0.002386344487305622
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "alphabet": "set2",
+   "case": "c1_axial",
+   "n_plies": 48,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 0.0,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      11749.1904,
+      11749.1904
+     ],
+     "dispersione_pct": 0.0
+    },
+    "coverage": {
+     "letti": 11319,
+     "attesi": 11319,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.4205846407573629,
+      "sx": 436.497,
+      "sy": 309.013,
+      "Q": 0.002321588222079833
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "alphabet": "set2",
+   "case": "c2_side",
+   "n_plies": 50,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 0.0,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      20651.7458,
+      20651.7458
+     ],
+     "dispersione_pct": 0.0
+    },
+    "coverage": {
+     "letti": 11781,
+     "attesi": 11781,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.4226879068970391,
+      "sx": 478.346,
+      "sy": 286.162,
+      "Q": 0.0022083148735016983
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  },
+  {
+   "alphabet": "set2",
+   "case": "c3_combo",
+   "n_plies": 54,
+   "verdetto": "ok",
+   "motivi": [],
+   "dispersione_invariante_pct": 0.0,
+   "misure": {
+    "layup_response": {
+     "bf_a": 0.7401168,
+     "bf_b": 1.152745,
+     "delta_pct": 35.7953
+    },
+    "scale_invariant": {
+     "prodotti": [
+      28052.3008,
+      28052.3008
+     ],
+     "dispersione_pct": 0.0
+    },
+    "coverage": {
+     "letti": 12705,
+     "attesi": 12705,
+     "frazione": 1.0
+    },
+    "constraints": {
+     "metriche": {
+      "disp": 0.37059308224115567,
+      "sx": 380.844,
+      "sy": 289.853,
+      "Q": 0.002344504599751611
+     },
+     "limiti": {
+      "disp": {
+       "soglia": 1.1
+      },
+      "sx": {
+       "soglia": 700.0
+      },
+      "sy": {
+       "soglia": 700.0
+      },
+      "Q": {
+       "soglia": 1.0
+      }
+     }
+    }
+   }
+  }
+ ]
+}
