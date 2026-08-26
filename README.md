@@ -81,6 +81,7 @@ evaluating independent candidates concurrently, which does not change the search
 |---|---|---|---|
 | Figures 1-3 | `fig:buck`, `fig:freq`, `fig:stress` | `figures/fig_fe_views.py` [^onescript] | `figures/_out/fig_ref_*.pdf` [^prov] |
 | Table 6, first block | `tab:validation` | `experiments/exp1_abaqus_validation.py` | printed; see `VALIDATION.md` |
+| Table 6, modal row | `tab:validation` | `experiments/exp29_modal_cross_solver.py` | `data/exp29_modal_cross_solver.json` [^modal] |
 | Table 6, cross-ply block | `tab:validation` | `experiments/exp2_crossply_baseline.py` (all four comparisons, including the 6.9% torsion case) | printed; see `VALIDATION.md` |
 | Table 7, Figure 5 | `tab:experimental`, `fig:experimental` | `experiments/exp9_experimental_validation.py` → `figures/fig_validation_parity.py` | `experiments/_out/exp9/` |
 | Tables 8-9 | `tab:feasible`, `tab:explicitseq` | `experiments/exp3_minply_sequences.py` (+ `exp3b` for the C1 row) | `data/exp3_minply_sequences.json`, `data/exp3b_c1_freq_constrained.json` |
@@ -102,6 +103,9 @@ evaluating independent candidates concurrently, which does not change the search
     on the first frequency, against Table 6, refuses to write the figure if it drifts.
 [^generated]: **Both files are written by the run.** The sweep is the generator: the table in the
     paper is regenerated from it, never transcribed.
+[^modal]: The Abaqus side cannot be re-run without a commercial licence, so the Abaqus result
+    file itself is distributed as `data/exp29_abaqus_freq661.dat`: its eigenvalues can be read
+    back by anyone. The CalculiX side regenerates. Five modes are compared, not one.
 [^exp4]: Keys `set1`/`set2`, with `per_seed`, median/IQR and the Holm-corrected tests.
     **`data/exp4_optimiser_comparison_set2.json` is SUPERSEDED**: it predates the deterministic-seed
     fix and its C1 omnibus (p=0.0398) contradicts the published one (p=0.83). It is kept only as a

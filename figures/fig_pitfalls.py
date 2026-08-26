@@ -88,7 +88,11 @@ CHOP = [('[0]$_{60}$\nreal',      20.10, True),
 # --- panel (B): |ccx / Abaqus| ------------------------------------------------------------
 # Three healthy ratios from Table 7, plus the 298x. Stored as the (ccx, Abaqus) PAIR rather
 # than the ratio, so the canary can check the arithmetic instead of trusting a copied number.
-RATIOS = [('freq\nsolid',           41.96,  41.91,   True),
+# La barra della frequenza veniva dal crop a 928 nodi del modello del coautore, che non e' nel
+# bundle e non e' ricalcolabile da nessuno. Sostituita il 2026-08-26 con il confronto modale
+# misurato da exp29 sul pannello S8R a 661 nodi che il bundle genera: ccx 532.91 contro Abaqus
+# 2026 LE 531.69 Hz. Stesso significato, stessa scala, ma la barra ora si rigenera.
+RATIOS = [('freq\nshell',         532.91, 531.69,   True),
           ('buckling\nsolid',        1.00,   0.00336, False),
           ('axial\nshell',         10.84,  10.819,  True),
           ('combo\nshell',          3.992,  3.915,  True)]   # 3.985 -> 3.992, audit A2
@@ -105,7 +109,7 @@ PEEL_JSON = ROOT / 'code' / 'data' / 'exp10_peel_mesh_sweep.json'
 PEEL_SPREAD_MIN = 15.0     # il corpo del testo rivendica un fattore ~22 sul massimo puntuale
 PEEL_AVG_SPREAD_MAX = 6.0  # ... contro ~4,2 sulla media di banda: varia lentamente, non converge
 
-PUBLISHED_RATIOS = [1.001, 298.0, 1.002, 1.020]   # as printed in the published panel (B)
+PUBLISHED_RATIOS = [1.002, 298.0, 1.002, 1.020]   # as printed in the published panel (B)
 #                                          ^ was 1.018 on the inherited 3.985; the audit of
 #                                            2026-07-20 recomputed the combined factor as
 #                                            3.9924, so the published bar is 3.9924/3.915.
