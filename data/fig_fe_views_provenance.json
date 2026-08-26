@@ -78,14 +78,14 @@
   "paper_ccx": 3.71,
   "paper_abaqus": 3.7,
   "plane_nodes": 661,
-  "seconds": 0.9
+  "seconds": 1.4
  },
  "frequency": {
   "f1_hz_ccx": 627.97,
   "paper_ccx": 628.0,
   "paper_abaqus": 626.5,
   "plane_nodes": 661,
-  "seconds": 1.1
+  "seconds": 1.3
  },
  "stress": {
   "load_case": "S1",
@@ -100,18 +100,26 @@
   "nodes": 14091,
   "quick": false,
   "s11_surface_MPa": [
-   0.0,
+   -240.4,
    370.7
   ],
   "s33_peak_MPa": [
-   -0.25,
+   -2.33,
    4.42
   ],
   "allowables_MPa": {
    "in_plane": 700.0,
    "peel": 10.0
   },
-  "seconds": 2.3
+  "seconds": 2.9,
+  "s11_volume_MPa": [
+   -240.4,
+   370.7
+  ],
+  "s33_volume_MPa": [
+   -2.8,
+   4.42
+  ]
  },
  "canaries": {
   "ok": true,

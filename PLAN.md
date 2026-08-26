@@ -27,7 +27,7 @@ code/
 │   ├── metaheuristics.py     <- rr_metaheuristics.py (GA / ACO / PSO, symmetric half-stack)
 │   └── constrained_search.py <- rr_optimiser.py      (min-ply constrained search, CASES)
 ├── experiments/
-│   ├── exp1_abaqus_validation.py   (ccx vs Abaqus: 10.84/10.819, 3.992/3.915, 532.91/531.69Hz)
+│   ├── exp1_abaqus_validation.py   (ccx vs Abaqus: 10.8395/10.819, 3.9924/3.9208, 532.91/531.69Hz)
 │   ├── exp2_crossply_baseline.py   (60-ply cross-ply: BF 14.63/3.59/2.41, f 614.7 Hz)
 │   ├── exp3_minply_sequences.py    (#8: 6 delivered sequences, C1/C2/C3 x 2 alphabets)
 │   ├── exp4_optimiser_comparison.py(30-seed GA/ACO/PSO, Kruskal-Wallis + Dunn)

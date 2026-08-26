@@ -26,8 +26,13 @@ quello era un altro pannello, piu' grande.
 AGGIORNATO 2026-08-26 anche sulle DUE RIGHE DI BUCKLING. Erano trascritte dal riferimento del
 coautore (Abaqus 2020), e il combinato valeva 3.915. Rieseguite entrambe su Abaqus 2026 Learning
 Edition, sullo STESSO deck a 661 nodi che questo bundle genera: assiale 10.819, identico alla cifra
-del paper; combinato **3.9208**, non 3.9152. La differenza (0.15%) e' fra due deck e due versioni,
-non fra due solutori -- ed e' proprio il motivo per cui ora si riporta la coppia NOSTRA: il paper
+del paper; combinato **3.9208**, non 3.9152.
+⚠️ CORRETTO il 26/08 stesso: il 3.9152 NON era il riferimento Abaqus 2020 del coautore, come questa
+nota diceva in una prima stesura. Era gia' un re-run su Abaqus LE 2026, fatto il 04/07 con un
+generatore di deck diverso (`rr_shell_composite`, variante abq, non piu' nel bundle), che riprodusse
+il 3.915 ereditato alla cifra stampata. La differenza dello 0.15% e' quindi fra DUE GENERATORI DI
+DECK a parita' di solutore e di versione, non fra due versioni -- ed e' il motivo per cui conta
+usare il deck che il bundle genera -- ed e' proprio il motivo per cui ora si riporta la coppia NOSTRA: il paper
 afferma che i due solutori vedono lo stesso input, e solo cosi' l'affermazione e' verificabile. I due
 file di risultati Abaqus sono versionati accanto (`data/exp1_abaqus_axial661.dat`,
 `data/exp1_abaqus_combined661.dat`), come gia' fatto per la riga modale: il lato commerciale si

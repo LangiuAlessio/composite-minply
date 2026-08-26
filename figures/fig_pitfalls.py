@@ -120,9 +120,12 @@ PEEL_AVG_SPREAD_MAX = 5.0  # ... contro 4,2 sulla media di banda: varia lentamen
 # contrasto si degrada, e non passano piu' per inerzia sui numeri di prima.
 
 PUBLISHED_RATIOS = [1.002, 298.0, 1.002, 1.018]   # as printed in the published panel (B)
-#                                          ^ was 1.018 on the inherited 3.985; the audit of
-#                                            2026-07-20 recomputed the combined factor as
-#                                            3.9924, so the published bar is 3.9924/3.915.
+#                                          ^ la coda di questo commento diceva ancora "the
+#                                            published bar is 3.9924/3.915": non e' piu' vero dal
+#                                            2026-08-26, il lato Abaqus e' 3.9208 e la barra 1.018.
+#                                            Storia: 1.018 sull'ereditato 3.985, poi 1.020 dopo che
+#                                            l'audit del 2026-07-20 ricalcolo' il ccx a 3.9924, ora
+#                                            di nuovo 1.018 perche' si e' mosso l'altro lato.
 
 
 def load_peel():
