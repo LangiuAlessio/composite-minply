@@ -79,14 +79,14 @@ evaluating independent candidates concurrently, which does not change the search
 
 | Paper item | Label | Script | Artefact |
 |---|---|---|---|
-| Figures 1-3 | `fig:buck`, `fig:freq`, `fig:stress` | `figures/fig_fe_views.py` (un solo script: due autovalori sullo shell S8R + statica sul solido C3D8I) | `figures/_out/fig_ref_*.pdf`, provenienza in `data/fig_fe_views_provenance.json`; canary a 1% su BLF e prima frequenza contro Table 6 |
+| Figures 1-3 | `fig:buck`, `fig:freq`, `fig:stress` | `figures/fig_fe_views.py` [^onescript] | `figures/_out/fig_ref_*.pdf` [^prov] |
 | Table 6, first block | `tab:validation` | `experiments/exp1_abaqus_validation.py` | printed; see `VALIDATION.md` |
 | Table 6, cross-ply block | `tab:validation` | `experiments/exp2_crossply_baseline.py` (all four comparisons, including the 6.9% torsion case) | printed; see `VALIDATION.md` |
 | Table 7, Figure 5 | `tab:experimental`, `fig:experimental` | `experiments/exp9_experimental_validation.py` → `figures/fig_validation_parity.py` | `experiments/_out/exp9/` |
 | Tables 8-9 | `tab:feasible`, `tab:explicitseq` | `experiments/exp3_minply_sequences.py` (+ `exp3b` for the C1 row) | `data/exp3_minply_sequences.json`, `data/exp3b_c1_freq_constrained.json` |
 | Table 10 | `tab:axialsweep` | `experiments/exp3_minply_sequences.py` (`sweeps.set2.c1_axial`) | `data/exp3_minply_sequences.json` |
-| Table 11 | `tab:minply` | `experiments/exp16_minply_sweep.py` | `data/exp16_minply_sweep.json` and `data/tab_minply_generated.tex`, **both written by the run** --- the sweep is the generator, and the table in the paper is regenerated from it (see the note below) |
-| Table 12 | `tab:full` | `experiments/exp4_optimiser_comparison.py` | published campaign: `data/exp4_optimiser_comparison.json` (keys `set1`/`set2`, with `per_seed`, median/IQR and Holm). **`data/exp4_optimiser_comparison_set2.json` is SUPERSEDED**: it predates the deterministic-seed fix and its C1 omnibus (p=0.0398) contradicts the published one (p=0.83). Kept only as a record of the earlier revision; do not verify against it. |
+| Table 11 | `tab:minply` | `experiments/exp16_minply_sweep.py` | `data/exp16_minply_sweep.json`, `data/tab_minply_generated.tex` [^generated] |
+| Table 12 | `tab:full` | `experiments/exp4_optimiser_comparison.py` | `data/exp4_optimiser_comparison.json` [^exp4] |
 | Figure 6 | `fig:bench` | `experiments/exp6_haftka_walsh.py` → `figures/fig_benchmark_haftka_walsh.py` | `data/exp6_haftka_walsh.json` |
 | Figure 7, panel A | `fig:neg` | `experiments/exp15_panelA_weakchop.py` → `figures/fig_pitfalls.py` | `data/exp15_panelA_weakchop.json` |
 | Figure 7, panel B | `fig:neg` | `experiments/exp13_solid_buckling_spurious.py` → `figures/fig_pitfalls.py` | `data/exp13_solid_buckling_spurious.json` |
@@ -94,7 +94,18 @@ evaluating independent candidates concurrently, which does not change the search
 | Section 3.8 (isotropic canaries) | --- | `experiments/exp14_isotropic_canaries.py` | printed |
 | Section 3.8 (fourth failure mode) + abstract | --- | `experiments/exp18_reference_load_screen.py` | `data/exp18_reference_load_screen.json` |
 | Section 3.6 (budget convergence at N=48) | `sec:sweep` | `experiments/exp19_budget_convergence.py` | `data/exp19_budget_convergence.json` |
-| Section 3.4 (extended orientation set) | `sec:alphabet` | `experiments/exp4_optimiser_comparison.py` (sweeps set1 and set2 in one run) | published campaign: `data/exp4_optimiser_comparison.json`, keys `set1`/`set2` (see note) |
+| Section 3.4 (extended orientation set) | `sec:alphabet` | `experiments/exp4_optimiser_comparison.py` (sweeps set1 and set2 in one run) | `data/exp4_optimiser_comparison.json` [^exp4] |
+
+[^onescript]: One script produces all three: two eigenvalue solves on the S8R shell plus a static
+    solve on the C3D8I solid.
+[^prov]: Provenance in `data/fig_fe_views_provenance.json`; a 1% canary on the buckling factor and
+    on the first frequency, against Table 6, refuses to write the figure if it drifts.
+[^generated]: **Both files are written by the run.** The sweep is the generator: the table in the
+    paper is regenerated from it, never transcribed.
+[^exp4]: Keys `set1`/`set2`, with `per_seed`, median/IQR and the Holm-corrected tests.
+    **`data/exp4_optimiser_comparison_set2.json` is SUPERSEDED**: it predates the deterministic-seed
+    fix and its C1 omnibus (p=0.0398) contradicts the published one (p=0.83). It is kept only as a
+    record of the earlier revision --- do not verify against it.
 
 > **Artefact-name drift in exp4, and which file the paper is actually on.** Two files in `data/` were
 > written by an earlier revision of the script that ran one alphabet at a time:
