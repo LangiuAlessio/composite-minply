@@ -141,9 +141,11 @@ evaluating independent candidates concurrently, which does not change the search
 Tables 1-6 are inputs, not results: they state the load cases, the constraints, the material data and the
 optimiser settings, and are read from the manuscript, not generated.
 
-Not reproducible from this bundle, and said so in the paper: the 41.96/41.91 Hz row of Table 7, measured
-on a 928-node crop of the coauthor's original Abaqus model of the industrial case. The other frequency
-row, on the cross-ply anchor, is reproducible (`exp2`).
+Both modal rows of the validation table are reproducible from this bundle: the quasi-isotropic one by
+`exp29_modal_cross_solver.py` (ccx re-run here, Abaqus result file distributed as
+`data/exp29_abaqus_freq661.dat`) and the cross-ply anchor by `exp2`. Until 2026-08-26 the table carried
+a third row, 41.96/41.91 Hz, measured on a 928-node crop of a coauthor's Abaqus model that is not part
+of this bundle: it was the one row no reader could recompute, and it has been replaced rather than kept.
 
 Run any script from the repository root so the `fe` and `optimisers` packages are importable
 (`PYTHONPATH=$PWD`).
@@ -228,8 +230,11 @@ Declared here so that no gap is silent (audit 2026-07-20, section E):
   screenshots of the coauthor's models, not data plots; the request to rescale the colour code of
   one of them (U Magnitude 284.71 -> 1) is still with the coauthor. Every DATA figure in the paper
   has its generator listed in the tables above.
-- **The 928-node modal crop** behind the frequency row of the industrial case is derived from the
-  coauthor's Abaqus deck (see *What cannot run from a clean clone* above) and is not in the bundle.
+- **The 928-node modal crop is no longer used.** It sat behind the frequency row of the industrial
+  case and was derived from a coauthor's Abaqus deck that is not in this bundle. Since 2026-08-26
+  that row is measured instead on the 661-node panel this bundle generates
+  (`exp29_modal_cross_solver.py`), so nothing in the validation table depends on an artefact a
+  reader cannot regenerate.
 - **`data/exp3_minply_sequences.json` mixes two passes, and the reason is a bug that is now
   fixed.** Its `sweeps` rows all carry `Q: null` and `feasible: false`, including the exact ply
   counts and buckling factors that the `delivered` block reports as feasible with a real `Q`.

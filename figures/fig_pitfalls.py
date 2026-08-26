@@ -107,8 +107,12 @@ PEEL_JSON = ROOT / 'code' / 'data' / 'exp10_peel_mesh_sweep.json'
 # con sigma_xx negativo e lasciava quelle celle a 0.0. Col parser corretto e sul caso di carico
 # della campagna (`campaign_S1`, che e' quello che il paragrafo del manoscritto descrive, non il
 # caso demo in compressione) i fattori misurati sono 21,7 sul massimo puntuale e 4,2 sulla media.
-PEEL_SPREAD_MIN = 15.0     # il corpo del testo rivendica un fattore ~22 sul massimo puntuale
-PEEL_AVG_SPREAD_MAX = 6.0  # ... contro ~4,2 sulla media di banda: varia lentamente, non converge
+PEEL_SPREAD_MIN = 19.0     # il corpo del testo rivendica un fattore 22 sul massimo puntuale
+PEEL_AVG_SPREAD_MAX = 5.0  # ... contro 4,2 sulla media di banda: varia lentamente, non converge
+# ⚠️ Ritarati DAVVERO il 2026-08-26 (la passata precedente aveva aggiornato il commento e lasciato
+# i numeri): 15.0 e 6.0 erano le soglie del vecchio 17 / 4,5, cioe' dei valori prodotti dal parser
+# .frd difettoso. Con margine su 21,7 e 4,2 misurati, una soglia a 19 e una a 5 mordono se il
+# contrasto si degrada, e non passano piu' per inerzia sui numeri di prima.
 
 PUBLISHED_RATIOS = [1.002, 298.0, 1.002, 1.020]   # as printed in the published panel (B)
 #                                          ^ was 1.018 on the inherited 3.985; the audit of
