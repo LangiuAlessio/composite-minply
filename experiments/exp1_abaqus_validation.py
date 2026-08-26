@@ -3,9 +3,9 @@
 The open-source CalculiX evaluator was validated against Abaqus 2020 on identical decks at a
 reference thickness:
 
-    axial buckling           ccx 10.84   vs  Abaqus 10.819   (0.2%)
-    combined buckling        ccx  3.992  vs  Abaqus  3.915    (2.0%)
-    first natural frequency  ccx 532.91  vs  Abaqus 531.69 Hz (0.2%)
+    axial buckling           ccx 10.8395 vs  Abaqus 10.819   (0.19%)
+    combined buckling        ccx  3.9924 vs  Abaqus  3.9208   (1.83%)
+    first natural frequency  ccx 532.91  vs  Abaqus 531.69 Hz (0.23%)
 
 CORRECTED 2026-07-25. This file used to print 3.985 for the combined case and "<= 1.8%" for the
 spread, both of which the manuscript had already left behind: finding A2 of the 2026-07-20 audit
@@ -23,8 +23,15 @@ exp29_modal_cross_solver.py, che porta con se' il file di risultati Abaqus per i
 lato commerciale sia rileggibile senza licenza. Il numero non e' piu' 41.96 e non deve esserlo:
 quello era un altro pannello, piu' grande.
 
-The Abaqus values of the two buckling rows are the coauthor's reference (Abaqus 2020, commercial /
-Windows-only) and are not re-run here; the modal row is re-run by exp29. The reproducible CalculiX side of the cross-solver check -- the 60-ply cross-ply
+AGGIORNATO 2026-08-26 anche sulle DUE RIGHE DI BUCKLING. Erano trascritte dal riferimento del
+coautore (Abaqus 2020), e il combinato valeva 3.915. Rieseguite entrambe su Abaqus 2026 Learning
+Edition, sullo STESSO deck a 661 nodi che questo bundle genera: assiale 10.819, identico alla cifra
+del paper; combinato **3.9208**, non 3.9152. La differenza (0.15%) e' fra due deck e due versioni,
+non fra due solutori -- ed e' proprio il motivo per cui ora si riporta la coppia NOSTRA: il paper
+afferma che i due solutori vedono lo stesso input, e solo cosi' l'affermazione e' verificabile. I due
+file di risultati Abaqus sono versionati accanto (`data/exp1_abaqus_axial661.dat`,
+`data/exp1_abaqus_combined661.dat`), come gia' fatto per la riga modale: il lato commerciale si
+rilegge senza licenza. Con la coppia nostra lo scarto sul combinato e' 1.83%, non 1.98%. The reproducible CalculiX side of the cross-solver check -- the 60-ply cross-ply
 baseline against Giacomo's Abaqus reference -- is in exp2_crossply_baseline.py. This file simply
 documents the validation table.
 
@@ -32,17 +39,17 @@ Run:  python experiments/exp1_abaqus_validation.py
 """
 
 ABAQUS = {
-    "axial buckling":        (10.84, 10.819),
-    "combined buckling":     (3.992, 3.915),
+    "axial buckling":        (10.8395, 10.819),
+    "combined buckling":     (3.9924, 3.9208),
     "first frequency [Hz]":  (532.91, 531.69),
 }
 
 
 def main():
-    print("CalculiX vs Abaqus 2020 (identical decks, reference thickness):")
+    print("CalculiX 2.21 vs Abaqus 2026 LE, same 661-node deck, reference thickness:")
     for quantity, (ccx, abq) in ABAQUS.items():
         print(f"  {quantity:24s}: ccx {ccx:>8}  vs  Abaqus {abq:>8}   ({100 * abs(ccx - abq) / abq:.2f}%)")
-    print("\nAbaqus is the coauthor's reference; the reproducible ccx-side check is exp2_crossply_baseline.py.")
+    print("\nBoth sides re-run on the deck this bundle generates; the Abaqus result files are in data/.")
 
 
 if __name__ == "__main__":
