@@ -1,0 +1,123 @@
+{
+ "question": "il 298x del pannello (B) e' locking del C3D8I o un autovalore spurio?",
+ "crop_deck": {
+  "sequence": [
+   0,
+   45,
+   -45
+  ],
+  "thickness_mm": 0.3,
+  "provenance": "crop_layers(k=3), 928-node sub-model, sotto il cap di 1000 nodi di Abaqus LE; fe-batch-lab FINDINGS:82"
+ },
+ "loads": [
+  -1000.0,
+  -100.0,
+  -10.0,
+  -1.0
+ ],
+ "invariance_gate_pct": 100.0,
+ "ccx": "ccx_2.21",
+ "shell_full": {
+  "rows": [
+   {
+    "axial": -1000.0,
+    "bf": 10.8395
+   },
+   {
+    "axial": -100.0,
+    "bf": 108.395
+   },
+   {
+    "axial": -10.0,
+    "bf": 1083.951
+   },
+   {
+    "axial": -1.0,
+    "bf": 10839.51
+   }
+  ],
+  "bf_spread_pct": 99900.09225517783,
+  "invariant_spread_pct": 9.22551778347505e-05
+ },
+ "solid_full": {
+  "rows": [
+   {
+    "axial": -1000.0,
+    "bf": 8.965376
+   },
+   {
+    "axial": -100.0,
+    "bf": 90.22041
+   },
+   {
+    "axial": -10.0,
+    "bf": 902.7876
+   },
+   {
+    "axial": -1.0,
+    "bf": 9030.263
+   }
+  ],
+  "bf_spread_pct": 100623.75101724682,
+  "invariant_spread_pct": 0.7237510172468211
+ },
+ "abaqus_sanity": {
+  "bf_full_6mm": 10.8395,
+  "t3_expected": 0.0013549374999999996,
+  "abaqus_crop": 0.00336,
+  "factor_from_expected": 2.47981917985147
+ },
+ "solid_crop3": {
+  "rows": [
+   {
+    "axial": -1000.0,
+    "bf": 1.021319
+   },
+   {
+    "axial": -100.0,
+    "bf": 0.8443625
+   },
+   {
+    "axial": -10.0,
+    "bf": 0.9803241
+   },
+   {
+    "axial": -1.0,
+    "bf": 1.07917
+   }
+  ],
+  "bf_spread_pct": 27.8088498719448,
+  "invariant_spread_pct": 94539.30613341737
+ },
+ "through_thickness_refinement": [
+  {
+   "elements_per_ply": 1,
+   "nz": 3,
+   "bf": 1.021319
+  },
+  {
+   "elements_per_ply": 2,
+   "nz": 6,
+   "bf": 1.018269
+  },
+  {
+   "elements_per_ply": 4,
+   "nz": 12,
+   "bf": 1.017301
+  }
+ ],
+ "crop_spectrum": [
+  0.8673625,
+  0.8890917,
+  0.8992919,
+  0.918382,
+  1.021319,
+  1.059814,
+  1.080124,
+  1.115192,
+  1.150843,
+  1.171752
+ ],
+ "verdict": "spurious",
+ "crop_invariant_spread_pct": 94539.30613341737
+}

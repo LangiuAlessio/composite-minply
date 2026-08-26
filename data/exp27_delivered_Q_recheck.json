@@ -1,0 +1,82 @@
+{
+ "note": "Q ricalcolato col parser .frd corretto (audit F1, 2026-08-26); la ricerca NON e stata rifatta, solo il vincolo dei sei design consegnati. C1 viene da exp3b (48 ply, vincolo di frequenza imposto), non dai 46 ply di exp3.",
+ "loads": {
+  "axial": 10000.0,
+  "side": 3000.0,
+  "torsion": 0.0
+ },
+ "mesh": {
+  "nx": 20,
+  "ny": 10
+ },
+ "ccx": "/usr/bin/ccx",
+ "all_still_feasible": true,
+ "rows": [
+  {
+   "alphabet": "set1",
+   "case": "c1_axial",
+   "n_plies": 48,
+   "Q_published": 0.0015451621737071373,
+   "Q_recomputed": 0.00246728607030924,
+   "ratio": 1.59678130379658,
+   "peel_avg": 0.3251327328306036,
+   "peel_point": 2.6060543017600017,
+   "still_feasible": true
+  },
+  {
+   "alphabet": "set1",
+   "case": "c2_side",
+   "n_plies": 50,
+   "Q_published": 0.001539,
+   "Q_recomputed": 0.0023271796904560165,
+   "ratio": 1.512137550653682,
+   "peel_avg": 0.35945459391615775,
+   "peel_point": 3.1951786646666633,
+   "still_feasible": true
+  },
+  {
+   "alphabet": "set1",
+   "case": "c3_combo",
+   "n_plies": 54,
+   "Q_published": 0.00154,
+   "Q_recomputed": 0.002386344487305622,
+   "ratio": 1.549574342406248,
+   "peel_avg": 0.3813074268083961,
+   "peel_point": 3.2236746576479955,
+   "still_feasible": true
+  },
+  {
+   "alphabet": "set2",
+   "case": "c1_axial",
+   "n_plies": 48,
+   "Q_published": 0.0015319650838350495,
+   "Q_recomputed": 0.002321588222079833,
+   "ratio": 1.5154315503510551,
+   "peel_avg": 0.3496955642044798,
+   "peel_point": 3.1037582848000036,
+   "still_feasible": true
+  },
+  {
+   "alphabet": "set2",
+   "case": "c2_side",
+   "n_plies": 50,
+   "Q_published": 0.001477,
+   "Q_recomputed": 0.0022083148735016983,
+   "ratio": 1.4951353239686516,
+   "peel_avg": 0.39719222893853817,
+   "peel_point": 3.8171802755555575,
+   "still_feasible": true
+  },
+  {
+   "alphabet": "set2",
+   "case": "c3_combo",
+   "n_plies": 54,
+   "Q_published": 0.001539,
+   "Q_recomputed": 0.002344504599751611,
+   "ratio": 1.5233948016579668,
+   "peel_avg": 0.41699901759714075,
+   "peel_point": 3.923184863759997,
+   "still_feasible": true
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "sequence": [
+  0,
+  45,
+  -45,
+  90,
+  0,
+  45,
+  -45,
+  90,
+  0,
+  45,
+  -45,
+  90,
+  0,
+  45,
+  -45,
+  90,
+  0,
+  45,
+  -45,
+  90,
+  0,
+  45,
+  -45,
+  90
+ ],
+ "meshes": [
+  [
+   10,
+   6
+  ],
+  [
+   20,
+   10
+  ],
+  [
+   30,
+   16
+  ],
+  [
+   40,
+   20
+  ]
+ ],
+ "figure_case": "campaign_S1",
+ "ccx": "/usr/bin/ccx",
+ "note": "Due casi di carico dal 26/08/2026: demo_compression e' quello storico di questo modulo, campaign_S1 e' il carico della campagna ed e' quello su cui poggiano il pannello (C) e la frase del manoscritto. Sotto compressione il peel mediato e' identicamente zero (la media di banda e' presa in parte positiva e li' la sigma_zz media e' compressiva), quindi il contrasto peel-contro-peel non e' dimostrabile su quel caso.",
+ "axial": 10000.0,
+ "side": 3000.0,
+ "rows": [
+  {
+   "nx": 10,
+   "ny": 6,
+   "nz": 24,
+   "peel_point": 0.6622504951433335,
+   "peel_avg": 0.12227263735047522,
+   "Q": 0.0015879780011075616,
+   "bc_resid": 12.630305693333332
+  },
+  {
+   "nx": 20,
+   "ny": 10,
+   "nz": 24,
+   "peel_point": 2.976408161944446,
+   "peel_avg": 0.23946937229136345,
+   "Q": 0.001976545655484991,
+   "bc_resid": 29.444206100000006
+  },
+  {
+   "nx": 30,
+   "ny": 16,
+   "nz": 24,
+   "peel_point": 7.855588285149995,
+   "peel_avg": 0.38298079752089553,
+   "Q": 0.0021785472279317298,
+   "bc_resid": 51.69635429999999
+  },
+  {
+   "nx": 40,
+   "ny": 20,
+   "nz": 24,
+   "peel_point": 14.343223790222213,
+   "peel_avg": 0.5089105905903484,
+   "Q": 0.0024344664302811373,
+   "bc_resid": 74.23537533333332
+  }
+ ],
+ "cases": {
+  "demo_compression": {
+   "axial": -8800.0,
+   "side": 2200.0,
+   "rows": [
+    {
+     "nx": 10,
+     "ny": 6,
+     "nz": 24,
+     "peel_point": 0.18447143073426667,
+     "peel_avg": 0.0,
+     "Q": 0.0009317700700247704,
+     "bc_resid": 9.744832246666666
+    },
+    {
+     "nx": 20,
+     "ny": 10,
+     "nz": 24,
+     "peel_point": 0.9640722713666668,
+     "peel_avg": 0.0,
+     "Q": 0.0011782638870951958,
+     "bc_resid": 22.877991999999992
+    },
+    {
+     "nx": 30,
+     "ny": 16,
+     "nz": 24,
+     "peel_point": 2.6361970768000007,
+     "peel_avg": 0.0,
+     "Q": 0.0012807342612105334,
+     "bc_resid": 40.29266084666667
+    },
+    {
+     "nx": 40,
+     "ny": 20,
+     "nz": 24,
+     "peel_point": 4.861341297022221,
+     "peel_avg": 0.0,
+     "Q": 0.001410148878249787,
+     "bc_resid": 58.007658200000016
+    }
+   ],
+   "point_factor": 26.352813970554838,
+   "peel_avg_factor": null,
+   "Q_factor": 1.5134086440577548,
+   "peel_avg_absent": true
+  },
+  "campaign_S1": {
+   "axial": 10000.0,
+   "side": 3000.0,
+   "rows": [
+    {
+     "nx": 10,
+     "ny": 6,
+     "nz": 24,
+     "peel_point": 0.6622504951433335,
+     "peel_avg": 0.12227263735047522,
+     "Q": 0.0015879780011075616,
+     "bc_resid": 12.630305693333332
+    },
+    {
+     "nx": 20,
+     "ny": 10,
+     "nz": 24,
+     "peel_point": 2.976408161944446,
+     "peel_avg": 0.23946937229136345,
+     "Q": 0.001976545655484991,
+     "bc_resid": 29.444206100000006
+    },
+    {
+     "nx": 30,
+     "ny": 16,
+     "nz": 24,
+     "peel_point": 7.855588285149995,
+     "peel_avg": 0.38298079752089553,
+     "Q": 0.0021785472279317298,
+     "bc_resid": 51.69635429999999
+    },
+    {
+     "nx": 40,
+     "ny": 20,
+     "nz": 24,
+     "peel_point": 14.343223790222213,
+     "peel_avg": 0.5089105905903484,
+     "Q": 0.0024344664302811373,
+     "bc_resid": 74.23537533333332
+    }
+   ],
+   "point_factor": 21.658305875811923,
+   "peel_avg_factor": 4.162097110342328,
+   "Q_factor": 1.5330605515839504,
+   "peel_avg_absent": false
+  }
+ }
+}

@@ -1,0 +1,300 @@
+{
+ "source": "Haftka & Walsh, NASA TM-104033 (1991), Fig. 2 and Fig. 5",
+ "plate": {
+  "a_in": 20.0,
+  "b_in": 10.0,
+  "plies": 16,
+  "angles": [
+   0,
+   45,
+   -45,
+   90
+  ]
+ },
+ "worst_clt_err_pct": 0.013716894593579661,
+ "min_thickness_all_match": true,
+ "max_buckling": [
+  {
+   "ratio": 0.125,
+   "lam_paper": 154.06,
+   "lam_exhaustive": 154.0617377006437,
+   "lam_ga": 154.0617377006437,
+   "err_pct": 0.0011279375851626643,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    45,
+    45,
+    45,
+    -45,
+    -45,
+    -45,
+    -45
+   ]
+  },
+  {
+   "ratio": 0.15,
+   "lam_paper": 148.46,
+   "lam_exhaustive": 148.46477507841186,
+   "lam_ga": 148.46477507841186,
+   "err_pct": 0.003216407390444179,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    90,
+    45,
+    90,
+    45,
+    45,
+    -45,
+    -45,
+    -45
+   ]
+  },
+  {
+   "ratio": 0.2,
+   "lam_paper": 137.1,
+   "lam_exhaustive": 137.1088156373769,
+   "lam_ga": 137.1088156373769,
+   "err_pct": 0.006430078320129954,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    90,
+    45,
+    45,
+    90,
+    -45,
+    -45,
+    -45
+   ]
+  },
+  {
+   "ratio": 0.24,
+   "lam_paper": 129.28,
+   "lam_exhaustive": 129.27654035234517,
+   "lam_ga": 129.27654035234517,
+   "err_pct": 0.0026760888419213045,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    45,
+    45,
+    90,
+    90,
+    -45,
+    -45,
+    -45
+   ]
+  },
+  {
+   "ratio": 0.25,
+   "lam_paper": 127.49,
+   "lam_exhaustive": 127.4989216367518,
+   "lam_ga": 127.4989216367518,
+   "err_pct": 0.006997911014046343,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    90,
+    90,
+    45,
+    90,
+    90,
+    45,
+    -45,
+    -45
+   ]
+  },
+  {
+   "ratio": 0.5,
+   "lam_paper": 94.29,
+   "lam_exhaustive": 94.29027014288367,
+   "lam_ga": 94.29027014288367,
+   "err_pct": 0.0002865021568188017,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    45,
+    90,
+    90,
+    90,
+    -45,
+    90,
+    -45
+   ]
+  },
+  {
+   "ratio": 1.0,
+   "lam_paper": 61.99,
+   "lam_exhaustive": 61.98717309846899,
+   "lam_ga": 61.98717309846899,
+   "err_pct": 0.0045602541232597675,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    90,
+    45,
+    90,
+    90,
+    90,
+    90,
+    -45,
+    90
+   ]
+  },
+  {
+   "ratio": 1.5,
+   "lam_paper": 46.18,
+   "lam_exhaustive": 46.18091642876122,
+   "lam_ga": 46.18091642876122,
+   "err_pct": 0.001984471115682592,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    90,
+    45,
+    90,
+    90,
+    -45,
+    90,
+    90,
+    90
+   ]
+  },
+  {
+   "ratio": 2.0,
+   "lam_paper": 36.84,
+   "lam_exhaustive": 36.83494669603173,
+   "lam_ga": 36.83494669603173,
+   "err_pct": 0.013716894593579661,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    90,
+    45,
+    -45,
+    90,
+    90,
+    90,
+    90,
+    90
+   ]
+  },
+  {
+   "ratio": 2.1,
+   "lam_paper": 35.4,
+   "lam_exhaustive": 35.396564843929035,
+   "lam_ga": 35.396564843929035,
+   "err_pct": 0.009703830708937246,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    90,
+    -45,
+    90,
+    90,
+    90,
+    90,
+    90
+   ]
+  },
+  {
+   "ratio": 2.4,
+   "lam_paper": 31.64,
+   "lam_exhaustive": 31.640103431427526,
+   "lam_ga": 31.640103431427526,
+   "err_pct": 0.00032690084553062813,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    45,
+    -45,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90
+   ]
+  },
+  {
+   "ratio": 2.45,
+   "lam_paper": 31.06,
+   "lam_exhaustive": 31.05634418641432,
+   "lam_ga": 31.05634418641432,
+   "err_pct": 0.01177016608395762,
+   "ga_recovers_optimum": true,
+   "seq_exhaustive": [
+    0,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90,
+    90
+   ]
+  }
+ ],
+ "min_thickness": [
+  {
+   "ny": 0.0,
+   "nx": 30.0,
+   "nply_paper": 10,
+   "nply_ours": 10,
+   "lam": 1.4061690622840453,
+   "match": true
+  },
+  {
+   "ny": 7.5,
+   "nx": 30.0,
+   "nply_paper": 10,
+   "nply_ours": 10,
+   "lam": 1.035323179294816,
+   "match": true
+  },
+  {
+   "ny": 15.0,
+   "nx": 30.0,
+   "nply_paper": 12,
+   "nply_ours": 12,
+   "lam": 1.3204186245410752,
+   "match": true
+  },
+  {
+   "ny": 22.5,
+   "nx": 30.0,
+   "nply_paper": 12,
+   "nply_ours": 12,
+   "lam": 1.0501168460875654,
+   "match": true
+  },
+  {
+   "ny": 30.0,
+   "nx": 30.0,
+   "nply_paper": 14,
+   "nply_ours": 14,
+   "lam": 1.3858701442175043,
+   "match": true
+  },
+  {
+   "ny": 45.0,
+   "nx": 30.0,
+   "nply_paper": 14,
+   "nply_ours": 14,
+   "lam": 1.032748836045898,
+   "match": true
+  },
+  {
+   "ny": 60.0,
+   "nx": 30.0,
+   "nply_paper": 16,
+   "nply_ours": 16,
+   "lam": 1.227831556534391,
+   "match": true
+  },
+  {
+   "ny": 75.0,
+   "nx": 30.0,
+   "nply_paper": 16,
+   "nply_ours": 16,
+   "lam": 1.0204227375536135,
+   "match": true
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+{
+ "mesh": {
+  "nelx": 60,
+  "nely": 12
+ },
+ "mode_ratio_closed_form": 2.0457,
+ "scale_of_pcr_swept": [
+  2.0,
+  1.0,
+  0.5,
+  0.25
+ ],
+ "n_strips": 3,
+ "n_strips_with_wrong_mode": 3,
+ "strips": [
+  {
+   "key": "W_S1",
+   "source": "Wysmulski 2024, Materials 17(5) 1081, Table 3 (EXP, no hole), S1",
+   "p_published_N": 187.0,
+   "mesh": {
+    "nelx": 60,
+    "nely": 12
+   },
+   "sane": {
+    "ref_load_N": 18.7,
+    "buckling_factor": 10.6908,
+    "p_critical_N": 199.9
+   },
+   "scale_rows": [
+    {
+     "scale_of_pcr": 2.0,
+     "ref_load_N": 399.8,
+     "buckling_factor": 1.0396,
+     "p_critical_N": 415.7,
+     "dev_vs_sane_pct": 107.928
+    },
+    {
+     "scale_of_pcr": 1.0,
+     "ref_load_N": 199.9,
+     "buckling_factor": 1.0,
+     "p_critical_N": 199.9,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.5,
+     "ref_load_N": 100.0,
+     "buckling_factor": 2.0,
+     "p_critical_N": 199.9,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.25,
+     "ref_load_N": 50.0,
+     "buckling_factor": 4.0,
+     "p_critical_N": 199.9,
+     "dev_vs_sane_pct": 0.0
+    }
+   ],
+   "pathological": {
+    "scale_of_pcr": 2.0,
+    "ref_load_N": 399.8,
+    "buckling_factor": 1.0396,
+    "p_critical_N": 415.7,
+    "dev_vs_sane_pct": 107.928,
+    "ratio_vs_fe": 2.0794,
+    "error_vs_fe_pct": 107.9,
+    "caught_by_factor_gt_1": false
+   }
+  },
+  {
+   "key": "W_S2",
+   "source": "Wysmulski 2024, Materials 17(5) 1081, Table 3 (EXP, no hole), S2",
+   "p_published_N": 610.0,
+   "mesh": {
+    "nelx": 60,
+    "nely": 12
+   },
+   "sane": {
+    "ref_load_N": 61.0,
+    "buckling_factor": 10.6888,
+    "p_critical_N": 652.0
+   },
+   "scale_rows": [
+    {
+     "scale_of_pcr": 2.0,
+     "ref_load_N": 1304.0,
+     "buckling_factor": 1.0112,
+     "p_critical_N": 1318.7,
+     "dev_vs_sane_pct": 102.243
+    },
+    {
+     "scale_of_pcr": 1.0,
+     "ref_load_N": 652.0,
+     "buckling_factor": 1.0,
+     "p_critical_N": 652.0,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.5,
+     "ref_load_N": 326.0,
+     "buckling_factor": 2.0,
+     "p_critical_N": 652.0,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.25,
+     "ref_load_N": 163.0,
+     "buckling_factor": 4.0,
+     "p_critical_N": 652.0,
+     "dev_vs_sane_pct": 0.0
+    }
+   ],
+   "pathological": {
+    "scale_of_pcr": 2.0,
+    "ref_load_N": 1304.0,
+    "buckling_factor": 1.0112,
+    "p_critical_N": 1318.7,
+    "dev_vs_sane_pct": 102.243,
+    "ratio_vs_fe": 2.0225,
+    "error_vs_fe_pct": 102.3,
+    "caught_by_factor_gt_1": false
+   }
+  },
+  {
+   "key": "W_S3",
+   "source": "Wysmulski 2024, Materials 17(5) 1081, Table 3 (EXP, no hole), S3",
+   "p_published_N": 639.0,
+   "mesh": {
+    "nelx": 60,
+    "nely": 12
+   },
+   "sane": {
+    "ref_load_N": 63.9,
+    "buckling_factor": 10.8959,
+    "p_critical_N": 696.3
+   },
+   "scale_rows": [
+    {
+     "scale_of_pcr": 2.0,
+     "ref_load_N": 1392.5,
+     "buckling_factor": 1.0091,
+     "p_critical_N": 1405.1,
+     "dev_vs_sane_pct": 101.814
+    },
+    {
+     "scale_of_pcr": 1.0,
+     "ref_load_N": 696.3,
+     "buckling_factor": 1.0,
+     "p_critical_N": 696.3,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.5,
+     "ref_load_N": 348.1,
+     "buckling_factor": 2.0,
+     "p_critical_N": 696.3,
+     "dev_vs_sane_pct": 0.0
+    },
+    {
+     "scale_of_pcr": 0.25,
+     "ref_load_N": 174.1,
+     "buckling_factor": 4.0,
+     "p_critical_N": 696.3,
+     "dev_vs_sane_pct": 0.0
+    }
+   ],
+   "pathological": {
+    "scale_of_pcr": 2.0,
+    "ref_load_N": 1392.5,
+    "buckling_factor": 1.0091,
+    "p_critical_N": 1405.1,
+    "dev_vs_sane_pct": 101.814,
+    "ratio_vs_fe": 2.0181,
+    "error_vs_fe_pct": 101.8,
+    "caught_by_factor_gt_1": false
+   }
+  }
+ ],
+ "ratio_vs_fe_mean": 2.04,
+ "error_vs_fe_pct_mean": 104.0
+}

@@ -1,0 +1,4 @@
+# Source Abaqus decks are third-party input data and are not redistributed here.
+*.inp
+!.gitignore
+!README.md

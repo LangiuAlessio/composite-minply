@@ -1,0 +1,100 @@
+{
+  "n_plies": 48,
+  "case": "c1_axial",
+  "budget": {
+    "pop": 40,
+    "gens": 24,
+    "seeds": [
+      1,
+      2
+    ]
+  },
+  "freq_min_Hz": 600.0,
+  "designs": {
+    "set1": {
+      "chosen": {
+        "buckling": 4.913621,
+        "sigma_x": 376.029,
+        "sigma_y": 268.695,
+        "disp_mm": 0.4173833720981227,
+        "shell_ok": true,
+        "f1_Hz": 618.5741,
+        "freq_ok": true,
+        "Q": 0.0015451621737071373,
+        "feasible": true,
+        "half_stack": [
+          0,
+          0,
+          0,
+          -45,
+          0,
+          0,
+          0,
+          45,
+          0,
+          0,
+          0,
+          45,
+          0,
+          0,
+          0,
+          -45,
+          0,
+          0,
+          0,
+          45,
+          90,
+          90,
+          90,
+          -45
+        ],
+        "symmetric": true,
+        "guidelines_ok": true
+      },
+      "rejected": []
+    },
+    "set2": {
+      "chosen": {
+        "buckling": 4.895496,
+        "sigma_x": 436.497,
+        "sigma_y": 309.013,
+        "disp_mm": 0.4205846407573629,
+        "shell_ok": true,
+        "f1_Hz": 617.4261,
+        "freq_ok": true,
+        "Q": 0.0015319650838350495,
+        "feasible": true,
+        "half_stack": [
+          0,
+          0,
+          0,
+          -30,
+          0,
+          0,
+          0,
+          45,
+          0,
+          0,
+          0,
+          30,
+          0,
+          -45,
+          90,
+          45,
+          0,
+          0,
+          -45,
+          90,
+          45,
+          90,
+          -45,
+          0
+        ],
+        "symmetric": true,
+        "guidelines_ok": true
+      },
+      "rejected": []
+    }
+  },
+  "wall_s": 10102.0
+}

@@ -1,0 +1,69 @@
+{
+ "freq_min_Hz": 600.0,
+ "designs": [
+  {
+   "case": "c1_axial",
+   "orientation_set": "set1",
+   "source": "exp3",
+   "n_plies": 46,
+   "f1_Hz": 590.8226,
+   "freq_ok": false
+  },
+  {
+   "case": "c2_side",
+   "orientation_set": "set1",
+   "source": "exp3",
+   "n_plies": 50,
+   "f1_Hz": 638.8003,
+   "freq_ok": true
+  },
+  {
+   "case": "c3_combo",
+   "orientation_set": "set1",
+   "source": "exp3",
+   "n_plies": 54,
+   "f1_Hz": 687.4773,
+   "freq_ok": true
+  },
+  {
+   "case": "c1_axial",
+   "orientation_set": "set2",
+   "source": "exp3",
+   "n_plies": 46,
+   "f1_Hz": 590.2003,
+   "freq_ok": false
+  },
+  {
+   "case": "c2_side",
+   "orientation_set": "set2",
+   "source": "exp3",
+   "n_plies": 50,
+   "f1_Hz": 617.1399,
+   "freq_ok": true
+  },
+  {
+   "case": "c3_combo",
+   "orientation_set": "set2",
+   "source": "exp3",
+   "n_plies": 54,
+   "f1_Hz": 670.8005,
+   "freq_ok": true
+  },
+  {
+   "case": "c1_axial",
+   "orientation_set": "set1",
+   "source": "exp3b",
+   "n_plies": 48,
+   "f1_Hz": 618.5741,
+   "freq_ok": true
+  },
+  {
+   "case": "c1_axial",
+   "orientation_set": "set2",
+   "source": "exp3b",
+   "n_plies": 48,
+   "f1_Hz": 617.4261,
+   "freq_ok": true
+  }
+ ]
+}

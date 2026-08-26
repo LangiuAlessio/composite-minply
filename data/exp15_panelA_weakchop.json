@@ -1,0 +1,63 @@
+{
+ "deck": "Composite_buckling_3.inp",
+ "ccx": "/usr/bin/ccx",
+ "claim_reproduced": true,
+ "rows": [
+  {
+   "label": "[0]_60  no-weak",
+   "n_active": 60,
+   "angle": 0,
+   "factors": [
+    20.14199,
+    20.74123,
+    21.29222,
+    21.99956
+   ],
+   "bf1": 20.14199,
+   "published_bf1": 20.1,
+   "within_tol": true
+  },
+  {
+   "label": "[0]_24  +36 weak",
+   "n_active": 24,
+   "angle": 0,
+   "factors": [
+    0.954788,
+    1.009353,
+    1.019746,
+    1.033008
+   ],
+   "bf1": 0.954788,
+   "published_bf1": 0.95,
+   "within_tol": true
+  },
+  {
+   "label": "[90]_24 +36 weak",
+   "n_active": 24,
+   "angle": 90,
+   "factors": [
+    0.9906359,
+    1.003893,
+    1.006172,
+    1.007503
+   ],
+   "bf1": 0.9906359,
+   "published_bf1": 0.99,
+   "within_tol": true
+  },
+  {
+   "label": "[0]_12  +48 weak",
+   "n_active": 12,
+   "angle": 0,
+   "factors": [
+    0.9852384,
+    0.9997027,
+    1.004267,
+    1.010172
+   ],
+   "bf1": 0.9852384,
+   "published_bf1": 0.98,
+   "within_tol": true
+  }
+ ]
+}
