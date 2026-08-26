@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Figure: the evaluator against thirteen measured buckling loads (Table 8).
 
-Panel (a) parity plot, predicted vs measured, three sources, three decades of load.
+Panel (a) parity plot, predicted vs measured, three sources, two and a half decades of load.
 Panel (b) the same thirteen deviations against the prediction each source published
           with its own tests.
 
@@ -179,7 +179,7 @@ def main():
     ax, bx = fig.subplots(1, 2, width_ratios=[1.0, 1.45])
 
     # ---------------- (a) parity ----------------
-    # No tolerance band here on purpose: across three decades a 10% envelope is
+    # No tolerance band here on purpose: across that range a 10% envelope is
     # thinner than the identity line itself, and drawing it would claim a
     # resolution the axis cannot show. The envelope belongs to panel (b).
     span = [140.0, 60000.0]
@@ -197,7 +197,7 @@ def main():
     ax.set_anchor('N')          # the square box hangs from the top, so (a) and (b) align
     ax.grid(True, which='major', zorder=0)
     ax.tick_params(length=2.5)
-    ax.text(0.95, 0.07, 'Three decades of load,\nno tuned parameter',
+    ax.text(0.95, 0.07, 'Two and a half decades of load,\nno tuned parameter',
             transform=ax.transAxes, ha='right', va='bottom', fontsize=6.6, color=SECOND,
             linespacing=1.4)
     ax.set_title('(a)  Predicted vs measured', loc='left', color=INK, pad=5)
