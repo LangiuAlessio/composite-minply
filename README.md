@@ -198,6 +198,9 @@ anything else in this bundle: a question reaches a person, not a repository.
 
 ## Citing
 
+Archived release: **DOI [10.5281/zenodo.22109868](https://doi.org/10.5281/zenodo.22109868)** (concept
+DOI --- it always resolves to the latest version; cite this one).
+
 If you use this code, please cite the paper. Load cases and the structural-integrity model
 follow the reference cases of Canale et al., *The Open Mechanical Engineering Journal* 12 (2018).
 
