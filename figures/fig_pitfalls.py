@@ -96,7 +96,12 @@ CHOP = [('[0]$_{60}$\nreal',      20.10, True),
 RATIOS = [('freq\nshell',         532.91, 531.69,   True),
           ('buckling\nsolid',        1.00,   0.00336, False),
           ('axial\nshell',         10.84,  10.819,  True),
-          ('combo\nshell',          3.992,  3.915,  True)]   # 3.985 -> 3.992, audit A2
+          ('combo\nshell',         3.9924, 3.9208,  True)]
+# Il lato Abaqus del combinato era 3.915, cioe' il riferimento Abaqus 2020 del coautore su un altro
+# deck. Il 2026-08-26 entrambe le righe di buckling sono state rieseguite in Abaqus 2026 LE sullo
+# STESSO deck a 661 nodi che il bundle genera (i .dat sono in data/): assiale 10.819 identico,
+# combinato 3.9208. La barra passa quindi da 1.020 a 1.018. Non e' un ritocco cosmetico: e' cio' che
+# rende verificabile l'affermazione del paper che i due solutori vedano lo stesso input.
 
 # --- panel (C): free-edge peel -------------------------------------------------------------
 # Read from the artefact, not transcribed: the mesh sweep of exp10_peel_mesh_sweep.py, which is
@@ -114,7 +119,7 @@ PEEL_AVG_SPREAD_MAX = 5.0  # ... contro 4,2 sulla media di banda: varia lentamen
 # .frd difettoso. Con margine su 21,7 e 4,2 misurati, una soglia a 19 e una a 5 mordono se il
 # contrasto si degrada, e non passano piu' per inerzia sui numeri di prima.
 
-PUBLISHED_RATIOS = [1.002, 298.0, 1.002, 1.020]   # as printed in the published panel (B)
+PUBLISHED_RATIOS = [1.002, 298.0, 1.002, 1.018]   # as printed in the published panel (B)
 #                                          ^ was 1.018 on the inherited 3.985; the audit of
 #                                            2026-07-20 recomputed the combined factor as
 #                                            3.9924, so the published bar is 3.9924/3.915.
