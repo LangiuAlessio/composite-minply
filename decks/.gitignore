@@ -1,4 +1,5 @@
-# Source Abaqus decks are third-party input data and are not redistributed here.
+# The industrial Abaqus deck is a coauthor's model and is not redistributed with this bundle
+# (see README.md). Everything else in the repository regenerates the paper's numbers.
 *.inp
 !.gitignore
 !README.md

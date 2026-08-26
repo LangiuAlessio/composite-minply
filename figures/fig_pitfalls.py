@@ -25,8 +25,9 @@ refuses to plot if any of them drifts. Their provenance:
               [90]_24+36w=0.991, [0]_12+48w=0.985 vs the plotted 20.10/0.95/0.99/0.98, with a
               per-bar canary. Data: code/data/exp15_panelA_weakchop.json. The source deck
               (decks/Composite_buckling_3.inp) is git-ignored: not versioned, coauthor's model.
-              (Il vincolo di releasability RR e' CADUTO il 2026-07-28, messaggio di G. Canale:
-              ne' geometria ne' dati sono coperti da copyright o restrizioni proprietarie.)
+              (Confirmed by the coauthor on 2026-07-28: neither the geometry nor the data of
+              this study is covered by copyright or by any proprietary restriction. The deck is
+              simply not ours to redistribute.)
   panel (B) -- Table 7 of the paper for the three healthy ratios; the 298x is ccx ~1.0 against
               Abaqus LE 0.00336 on the 928-node 3-ply crop (FINDINGS:82). Both re-measured:
               exp12 reproduces the Table 7 deck, exp13 reproduces the ccx ~1.0 on the crop.

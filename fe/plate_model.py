@@ -2,7 +2,7 @@
 """
 Canale composite plate — frequency + buckling baseline (CalculiX).
 
-Concrete problem from the industrial reference case (composites):
+Concrete problem contributed by the coauthor Giacomo Canale (composites):
   Flat rectangular CFRP plate 100 mm x 50 mm, 20 plies @ 0.125 mm = 2.5 mm laminate.
   Evaluate two constraints for a baseline layup:
     - 7th natural frequency (mode 7) > 60 Hz

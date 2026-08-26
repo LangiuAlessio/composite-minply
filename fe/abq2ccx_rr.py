@@ -1,7 +1,8 @@
 # Ported into this bundle 2026-07-20 (RS-005) from ingegneria/fe-batch-lab/cases/abq2ccx_rr.py,
 # the FE dev lab from which code/ was extracted. Unchanged. It is the generator behind panel (A)
 # of the pitfalls figure (experiments/exp15_panelA_weakchop.py). stdlib-only (re).
-"""Translate the industrial composite panel Abaqus decks (Composite_*.inp) into a CalculiX (ccx) runnable deck.
+"""Translate the industrial composite-panel Abaqus decks (Composite_*.inp,
+Giacomo Canale) into a CalculiX (ccx) runnable deck.
 
 These decks are full Abaqus: a single Part/Instance/Assembly (identity transform),
 a C3D8I solid with 60 plies modelled as 60 oriented *Solid Section element layers,
