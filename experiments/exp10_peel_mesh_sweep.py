@@ -1,7 +1,6 @@
 """Panel (C) della figura dei pitfall: la peel di bordo libero e' SINGOLARE.
 
-Ricostruisce i dati del pannello (C), che nel repo non erano mai stati salvati
-(RS-005). Le due curve del pannello sono DUE VALUTATORI DIVERSI, non due
+Ricostruisce i dati del pannello (C), che nel repo non erano mai stati salvati. Le due curve del pannello sono DUE VALUTATORI DIVERSI, non due
 post-processing dello stesso campo:
 
   rosso  "naive point-max"  -> massimo puntuale di |SZZ| dall'ESPANSIONE DEL

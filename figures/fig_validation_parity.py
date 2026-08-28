@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Figure: the evaluator against thirteen measured buckling loads (Table 8).
+"""Figure: the evaluator against thirteen measured buckling loads (tab:experimental).
 
 Panel (a) parity plot, predicted vs measured, three sources, two and a half decades of load.
 Panel (b) the same thirteen deviations against the prediction each source published
@@ -12,7 +12,7 @@ finely than the experiment can repeat itself.
 Every number is read from code/experiments/_out/exp9/exp9_all_sources.json; the
 prediction published by each source is recovered exactly from the deviation the
 experiment script recorded against it. The script refuses to plot unless it
-reproduces the manuscript's Table 8 to the digit it prints (canary check).
+reproduces the manuscript's tab:experimental to the digit it prints (canary check).
 
     python3 code/figures/fig_validation_parity.py
 """
@@ -29,9 +29,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _style import (AMBER, AXIS, BLUE, GREEN, GRID, INK, MDPI_LINEWIDTH_IN, MUTED,
                     REF as RIVAL, SECOND, SURFACE, style)
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / 'code' / 'experiments' / '_out' / 'exp9' / 'exp9_all_sources.json'
-OUT = ROOT / 'RR_experimental_validation.pdf'
+# ⚠️ I percorsi si calcolano dal BUNDLE, non da due livelli sopra. `parents[2]` funzionava solo
+# dentro il monorepo, dove questo repo si chiama `code/` e sta dentro la cartella del paper: in un
+# clone di composite-minply puntava alla directory SOPRA il clone, e i tre script delle figure
+# fallivano tutti -- cioe' `reproduce.sh` usciva in errore per ogni lettore.
+BUNDLE = Path(__file__).resolve().parents[1]
+# La figura si scrive accanto al paper se siamo nel monorepo, dentro il clone altrimenti.
+_LEAF = BUNDLE.parent
+OUTDIR = _LEAF if (_LEAF / 'composite_opt.bib').is_file() else BUNDLE / 'figures' / '_out'
+OUTDIR.mkdir(parents=True, exist_ok=True)
+DATA = BUNDLE / 'experiments' / '_out' / 'exp9' / 'exp9_all_sources.json'
+OUT = OUTDIR / 'RR_experimental_validation.pdf'
 
 LB = 4.4482216152605  # N per lbf, as in exp9_experimental_validation.py
 
@@ -53,7 +61,7 @@ LABELS = {
 MATCHED = [('B1_0_10s', 'N26_A1_0_10s'), ('C1_90_10s', 'N26_B1_90_10s'),
            ('D1_0_90_5s', 'N26_C1_0_90_5s')]
 
-# Table 8 of the manuscript: measured, this evaluator, source's own [lb, lb, lb / N]
+# tab:experimental of the manuscript: measured, this evaluator, source's own [lb, lb, lb / N]
 TABLE8 = {
     # A1 evaluator was 1936 until 2026-07-20; the FE gives 1937.48 lb, and the +3.5% printed
     # beside it is 1937.48/1872, not 1936/1872 (which would be +3.4%). Audit finding B9: the
@@ -142,9 +150,9 @@ def canary(rows):
         bad.append(f'expected 10 distinct-model rows, got {len(ten)}')
 
     if bad:
-        sys.exit('CANARY FAILED - figure disagrees with Table 8:\n  ' + '\n  '.join(bad))
+        sys.exit('CANARY FAILED - figure disagrees with tab:experimental:\n  ' + '\n  '.join(bad))
 
-    print(f'canary ok: 13/13 loads and 26/26 percentages match Table 8 '
+    print(f'canary ok: 13/13 loads and 26/26 percentages match tab:experimental '
           f'(mean |dev| ours {mean_ours:.1f}%, source\'s own {mean_rival:.1f}%; '
           f'on the 10 distinct-model rows {ten_ours:.1f}% and {ten_rival:.1f}%)')
     return mean_ours, mean_rival
@@ -259,7 +267,7 @@ def main():
 
     fig.savefig(OUT)                      # no tight bbox: the canvas IS the printed width
     fig.savefig(OUT.with_suffix('.png'), dpi=300)
-    print(f'wrote {OUT.relative_to(ROOT)} and .png')
+    print(f'wrote {OUT.name} and .png')
 
 
 if __name__ == '__main__':

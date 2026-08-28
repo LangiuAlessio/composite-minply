@@ -22,7 +22,7 @@ This module is deliberately SELF-CONTAINED (it does not import constrained_searc
 constrained_search can import from it without a cycle; `adiff` lives here and is imported
 back, so the disorientation metric has ONE definition in the codebase. The rules encoded in
 `build_dfa` are checked against the live `manufacturing_ok`/`guidelines_ok` by brute-force
-enumeration in `algo_dfa/parikh_dp.py --check` -- if they ever drift apart, that check fails.
+enumeration in `the reference implementation` -- if they ever drift apart, that check fails.
 """
 from __future__ import annotations
 
@@ -340,7 +340,7 @@ def uniform_sampler(alpha, n, rng):
 if __name__ == '__main__':                # python3 -m optimisers.laminate_language
     # Self-check: every draw is validated by the LIVE rule checkers, not by this module's
     # own idea of the rules -- the whole point is that the two must agree. The exhaustive
-    # DP-vs-brute-force verification lives in algo_dfa/parikh_dp.py --check.
+    # DP-vs-brute-force verification lives in the reference implementation.
     import random
     import time
     from optimisers.constrained_search import manufacturing_ok, guidelines_ok, gen_guided

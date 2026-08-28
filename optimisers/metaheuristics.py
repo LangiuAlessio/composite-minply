@@ -157,7 +157,7 @@ if __name__ == "__main__":
     seed = int(os.environ.get("SEED", "1"))
     cases = {k: _scaled(v, scale) for k, v in CASES.items()}
     log.info("=== GA vs ACO vs PSO | alphabet set2 %s | N=%d ply | load_scale=%s ===", ALPHA, n, scale)
-    budget = Budget()   # local cap over the whole head-to-head; lifted by RR_TARGET=ailab
+    budget = Budget()   # local cap over the whole head-to-head; lifted by COMPOSITE_TARGET=cluster
     results = {}
     with Pool(int(os.environ.get("NPROC", str(os.cpu_count())))) as pool:
         for cname, case in cases.items():
@@ -167,7 +167,7 @@ if __name__ == "__main__":
                 reason = budget.overrun()
                 if reason:
                     log.error("metaheuristics: budget exhausted (%s) at %s/%s -- aborting locally. "
-                              "Run the full head-to-head on ailab (RR_TARGET=ailab), not this machine.",
+                              "Run the full head-to-head on cluster (COMPOSITE_TARGET=cluster), not this machine.",
                               reason, cname, oname)
                     break
                 t0 = time.time()
@@ -183,7 +183,7 @@ if __name__ == "__main__":
     print("=== best sequence per case (across optimisers) ===")
     for cname in cases:
         if not results.get(cname):
-            print(f"{cname}: ABORTED — budget exceeded (see ERROR log); dispatch to ailab")
+            print(f"{cname}: ABORTED — budget exceeded (see ERROR log); dispatch to cluster")
             continue
         win = max(results[cname], key=lambda o: results[cname][o]["bf"])
         r = results[cname][win]

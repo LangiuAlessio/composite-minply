@@ -8,7 +8,7 @@ dall'ESPANSIONE DEL GUSCIO S8R, cioe' `peel_max` di
 di quel modulo chiama "an ESTIMATE ... junk", e che a 20x10 vale 45.06 MPa
 (dentro il range dei punti rossi pubblicati [9.8 .. 62]).
 
-Perche' esiste (RS-005, 2026-07-20): finche' la mesh del guscio stava nelle
+Perche' esiste (2026-07-20): finche' la mesh del guscio stava nelle
 costanti di modulo `NX, NY` (grid `_ID/_NODES/_ELEMS` congelato a import-time
 mentre clamp/tip ricalcolavano dai runtime NX,NY), cambiarla faceva morire il
 deck con "division by zero" (`tip` vuoto -> `sum/len(tip)`). Ora `make_ccx_deck`
@@ -22,7 +22,7 @@ Due canarini:
   (2) FIGURA: il point-max del guscio deve DIVERGERE col raffinamento (>3x),
       altrimenti il pannello (C) non dice piu' quel che la didascalia afferma.
 
-Uso (SOLO su head, non sul laptop):
+Uso (su un nodo di calcolo, non sul laptop):
   ./code/run_on_head.sh experiments.exp10b_shell_peel_mesh_sweep
 """
 from __future__ import annotations
@@ -44,7 +44,7 @@ SLOAD = dict(axial=AXIAL, side=SIDE, torsion=0.)
 MESHES = [(10, 6), (20, 10), (30, 16), (40, 20)]     # stesse mesh di exp10
 
 # --- canary di regressione: hash del deck di default catturati PRIMA del refactor
-#     (seq=[0,45,-45,90]*6, case=CASES['c3_combo'], mesh=None). Vedi RS-005.
+#     (seq=[0,45,-45,90]*6, case=CASES['c3_combo'], mesh=None). 
 BASELINE = dict(
     seq=[0, 45, -45, 90] * 6, case='c3_combo',
     buck_sha='c32ee0f15094426ed558f91f755902e2ad04757b399dfe075bd2d7140819018a',

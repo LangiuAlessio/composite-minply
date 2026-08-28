@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Figure: three decisive pitfalls in composite-buckling optimisation (Figure 9).
+"""Figure: three decisive pitfalls in composite-buckling optimisation (fig:neg).
 
 PORTED, 2026-07-20. This figure was the only one in the paper with no source inside this
-bundle, and RS-005 had recorded two of its three panels as unrecoverable. Both records were
+bundle, and the development log had recorded two of its three panels as unrecoverable. Both records were
 wrong: the source existed all along in a DIFFERENT repository --
-`ingegneria/fe-batch-lab/cases/negative_results_plot.py`, the FE development lab from which
+the FE development lab from which
 this bundle was extracted -- so every search run from the root of `ateneo/` was blind to it
 by construction. This file is that script, brought into the bundle and put on the paper's
 visual system, with every number carrying its provenance.
@@ -19,7 +19,7 @@ visual system, with every number carrying its provenance.
 The numbers are those of the published figure, reproduced here exactly; the canary below
 refuses to plot if any of them drifts. Their provenance:
   panel (A) -- weak-chop buckling on the 14k-node C3D8I solid (Composite_buckling_3.inp, case 3).
-              GENERATED IN-BUNDLE (RS-005, 2026-07-20): experiments/exp15_panelA_weakchop.py
+              GENERATED IN-BUNDLE (2026-07-20): experiments/exp15_panelA_weakchop.py
               reruns the four variants on ccx (translator fe/abq2ccx_rr.py) and reproduces the
               published bars to the printed digits -- [0]_60=20.14, [0]_24+36w=0.955,
               [90]_24+36w=0.991, [0]_12+48w=0.985 vs the plotted 20.10/0.95/0.99/0.98, with a
@@ -28,15 +28,15 @@ refuses to plot if any of them drifts. Their provenance:
               (Confirmed by the coauthor on 2026-07-28: neither the geometry nor the data of
               this study is covered by copyright or by any proprietary restriction. The deck is
               simply not ours to redistribute.)
-  panel (B) -- Table 7 of the paper for the three healthy ratios; the 298x is ccx ~1.0 against
-              Abaqus LE 0.00336 on the 928-node 3-ply crop (FINDINGS:82). Both re-measured:
-              exp12 reproduces the Table 7 deck, exp13 reproduces the ccx ~1.0 on the crop.
+  panel (B) -- tab:validation of the paper for the three healthy ratios; the 298x is ccx ~1.0 against
+              Abaqus LE 0.00336 on the 928-node 3-ply crop (development log). Both re-measured:
+              exp12 reproduces the tab:validation deck, exp13 reproduces the ccx ~1.0 on the crop.
   panel (C) -- REBUILT ON THE DATA, 2026-07-25. It was the one panel whose numbers no artefact in
               the bundle produced: four hardcoded point-max values [9.8, 21.0, 33.0, 62.0] MPa,
               commented "across layups", against a single averaged point at 0.1, under a dashed
               "naive allowable 'peel < 10'" that three of the four cleared. The generator named
               right here, exp10_peel_mesh_sweep.py, measures something else -- a MESH sweep, which
-              is also what the paper's caption and Section 3.8 describe -- and its four rows are
+              is also what the paper's caption and the verification-layer section describe -- and its four rows are
               0.280/0.989/2.636/4.861 MPa point-max against 0.0296/0.0252/0.0802/0.1138 averaged.
               Two consequences, both of which the published panel got wrong: the point-max spread
               is a factor of 17, not 6.3, and NO mesh in the sweep reaches the 10 MPa allowable,
@@ -45,7 +45,7 @@ refuses to plot if any of them drifts. Their provenance:
               and the canary reads that file instead of trusting a transcription. The "averaged
               criterion (stable)" legend and the "the averaged Q converges" annotation went with
               it: B2 of the 2026-07-22 audit retired exactly that claim from the body ("bounded
-              rather than mesh-converged, and deliberately", Section 3.8), and the figure was
+              rather than mesh-converged, and deliberately", the verification-layer section), and the figure was
               still asserting it.
 
 ⚠️ OPEN CAVEAT ON PANEL (B) -- the number is right, the stated cause may not be. The paper
@@ -57,7 +57,7 @@ at constant thickness (1.0213 -> 1.0173 from one to four elements per ply), and 
 a dense cluster of local modes between 0.87 and 1.17 with no separated global mode. That is the
 signature panel (A) itself uses to prove an eigenvalue is SPURIOUS. The conclusion the figure
 draws is unaffected -- the solid is not trustworthy for buckling, use the shell -- but the
-mechanism named in the caption and in the body is not the one the data supports. Left as it was
+mechanism named in the caption and in the body is not the one the data supports. Aligned with the paper, which now rules that explanation out
 published, deliberately: changing the science is a coauthor decision, not a porting decision.
 
     python3 code/figures/fig_pitfalls.py
@@ -74,8 +74,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _style import (AMBER, AXIS, BLUE, GREEN, GRID, INK, MDPI_LINEWIDTH_IN, MUTED,
                     REF, SECOND, SURFACE, style)
 
-ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'code' / 'figures' / '_out' / 'fig_pitfalls.pdf'
+# ⚠️ I percorsi si calcolano dal BUNDLE, non da due livelli sopra. `parents[2]` funzionava solo
+# dentro il monorepo, dove questo repo si chiama `code/` e sta dentro la cartella del paper: in un
+# clone di composite-minply puntava alla directory SOPRA il clone, e i tre script delle figure
+# fallivano tutti -- cioe' `reproduce.sh` usciva in errore per ogni lettore.
+BUNDLE = Path(__file__).resolve().parents[1]
+(BUNDLE / 'figures' / '_out').mkdir(parents=True, exist_ok=True)
+# ⚠️ Questa figura scrive SEMPRE in figures/_out/, in ogni contesto: il manoscritto la include con
+# un altro nome (RR_negative_results.pdf) e la copia e' un passo manuale documentato nel .tex.
+# Mandarla accanto al paper come le altre due romperebbe quella ricetta e lascerebbe nel leaf un
+# fig_pitfalls.pdf orfano, mentre il PDF incluso resta quello vecchio.
+OUT = BUNDLE / 'figures' / '_out' / 'fig_pitfalls.pdf'
 
 # --- panel (A): weak-material chop -------------------------------------------------------
 # BF1 of the real 60-ply laminate, then three weak-filler variants. The point is that the
@@ -87,7 +96,7 @@ CHOP = [('[0]$_{60}$\nreal',      20.10, True),
         ('[0]$_{12}$\n+48 w',     0.98, False)]
 
 # --- panel (B): |ccx / Abaqus| ------------------------------------------------------------
-# Three healthy ratios from Table 7, plus the 298x. Stored as the (ccx, Abaqus) PAIR rather
+# Three healthy ratios from tab:validation, plus the 298x. Stored as the (ccx, Abaqus) PAIR rather
 # than the ratio, so the canary can check the arithmetic instead of trusting a copied number.
 # La barra della frequenza veniva dal crop a 928 nodi del modello del coautore, che non e' nel
 # bundle e non e' ricalcolabile da nessuno. Sostituita il 2026-08-26 con il confronto modale
@@ -105,8 +114,8 @@ RATIOS = [('freq\nshell',         532.91, 531.69,   True),
 
 # --- panel (C): free-edge peel -------------------------------------------------------------
 # Read from the artefact, not transcribed: the mesh sweep of exp10_peel_mesh_sweep.py, which is
-# the sweep the caption and Section 3.8 describe. Four in-plane meshes at fixed nz=24.
-PEEL_JSON = ROOT / 'code' / 'data' / 'exp10_peel_mesh_sweep.json'
+# the sweep the caption and the verification-layer section describe. Four in-plane meshes at fixed nz=24.
+PEEL_JSON = BUNDLE / 'data' / 'exp10_peel_mesh_sweep.json'
 # Ricalibrati il 2026-08-26. I due numeri di prima (15 e 6) codificavano il 17 e il 4,5 del corpo
 # del testo, che erano stati prodotti da un parser .frd difettoso: scartava in silenzio ogni riga
 # con sigma_xx negativo e lasciava quelle celle a 0.0. Col parser corretto e sul caso di carico
@@ -261,7 +270,7 @@ def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT)
     fig.savefig(OUT.with_suffix('.png'), dpi=300)
-    print(f'wrote {OUT.relative_to(ROOT)} and .png')
+    print(f'wrote {OUT.name} and .png')
 
 
 if __name__ == '__main__':

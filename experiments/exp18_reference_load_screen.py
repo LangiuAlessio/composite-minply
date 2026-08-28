@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """exp18 -- the reference-load screen: the fourth failure mode, with an artefact behind it.
 
-THE generator of the reference-load failure mode of Section 3.8 ("A fourth failure mode") and
+THE generator of the reference-load failure mode of the verification-layer section ("A fourth failure mode") and
 of the percentage the abstract quotes for it. Until this script existed that number lived in a
 docstring of exp9_experimental_validation.py and NOWHERE else -- no deck, no .dat, no data
 file. The 2026-07-22 audit listed it under "debts in the repo"; this closes it, and in closing
@@ -132,7 +132,7 @@ def main() -> None:
 
     if not hit:
         raise SystemExit('exp18 canary FAILED: no strip returned a different eigenvalue at any '
-                         'scale, so the failure mode Section 3.8 reports did not reproduce')
+                         'scale, so the failure mode the verification-layer section reports did not reproduce')
 
     print(f"\n  wrong mode on {len(hit)}/{len(records)} strips")
     print(f"  ratio vs sane FE: {out['ratio_vs_fe_mean']:.4f} "
@@ -147,7 +147,7 @@ def main() -> None:
     fail = []
     if abs(out['ratio_vs_fe_mean'] - MODE_RATIO) / MODE_RATIO > 0.02:
         fail.append(f"the ratio is {out['ratio_vs_fe_mean']:.4f}, not the second-to-first mode "
-                    f"ratio {MODE_RATIO:.4f}: the mechanism named in Section 3.8 -- the second "
+                    f"ratio {MODE_RATIO:.4f}: the mechanism named in the verification-layer section -- the second "
                     f"mode returned in place of the first -- is not what these data show")
     if any(r['pathological']['caught_by_factor_gt_1'] for r in hit):
         fail.append('at least one pathological run reports a factor below unity, so the '

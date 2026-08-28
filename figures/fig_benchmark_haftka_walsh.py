@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Figure: the search operators against the Haftka-Walsh certified global optima.
+"""Figure: our results against the Haftka-Walsh certified global optima.
 
-(a) maximum buckling load factor over twelve load ratios;
-(b) the minimum-thickness dual over eight transverse loads.
+(a) maximum buckling load factor over twelve load ratios, recovered by the GA;
+(b) the minimum-thickness dual over eight transverse loads, recovered by EXHAUSTIVE
+    ENUMERATION over the balanced symmetric half-stacks -- not by the search. The two
+    panels do not come from the same method, and the legend must say so: until 27/08
+    it said 'this search (GA)' for both, contradicting the paper's own caption.
 
 In both panels the published global optimum is the open grey mark (the reference)
-and our search is the filled blue one -- the same convention as the experimental
+and ours is the filled blue one -- the same convention as the experimental
 figure, where open grey is always somebody else's number.
 
 Data: code/data/exp6_haftka_walsh.json, written by
@@ -29,9 +32,17 @@ from matplotlib.lines import Line2D
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _style import AXIS, BLUE, GRID, INK, MDPI_LINEWIDTH_IN, REF, SECOND, SURFACE, style
 
-ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / 'code' / 'data' / 'exp6_haftka_walsh.json'
-OUT = ROOT / 'RR_benchmark_haftka_walsh.pdf'
+# ⚠️ I percorsi si calcolano dal BUNDLE, non da due livelli sopra. `parents[2]` funzionava solo
+# dentro il monorepo, dove questo repo si chiama `code/` e sta dentro la cartella del paper: in un
+# clone di composite-minply puntava alla directory SOPRA il clone, e i tre script delle figure
+# fallivano tutti -- cioe' `reproduce.sh` usciva in errore per ogni lettore.
+BUNDLE = Path(__file__).resolve().parents[1]
+# La figura si scrive accanto al paper se siamo nel monorepo, dentro il clone altrimenti.
+_LEAF = BUNDLE.parent
+OUTDIR = _LEAF if (_LEAF / 'composite_opt.bib').is_file() else BUNDLE / 'figures' / '_out'
+OUTDIR.mkdir(parents=True, exist_ok=True)
+DATA = BUNDLE / 'data' / 'exp6_haftka_walsh.json'
+OUT = OUTDIR / 'RR_benchmark_haftka_walsh.pdf'
 
 
 def canary(d):
@@ -111,15 +122,19 @@ def main():
 
     fig.legend(handles=[
         Line2D([], [], marker='o', ls='none', ms=6.0, mfc=SURFACE, mec=REF, mew=1.0,
-               label='Haftka-Walsh (1991), certified global optimum'),
+               label='Haftka-Walsh (1992), certified global optimum'),
         Line2D([], [], marker='o', ls='none', ms=3.6, color=BLUE, mec=SURFACE, mew=0.6,
-               label='this search (GA)')],
-        loc='outside upper center', ncol=2, frameon=False,
-        handletextpad=0.4, columnspacing=2.0)
+               label='ours: GA in (a), exhaustive enumeration in (b)')],
+        # ⚠️ ncol=1, non 2. Il canvas ha larghezza FISSA (e' la larghezza di stampa, vedi il
+        # commento su savefig) e a due colonne l'etichetta allungata il 27/08 -- che distingue il
+        # pannello (a) dal (b) -- sbordava: nel PDF consegnato il «(b)» finale risultava TAGLIATO,
+        # e il manoscritto includeva la figura cosi'. Impilate, le due voci ci stanno intere.
+        loc='outside upper center', ncol=1, frameon=False,
+        handletextpad=0.4, labelspacing=0.3, fontsize=7.0)
 
     fig.savefig(OUT)                      # no tight bbox: the canvas IS the printed width
     fig.savefig(OUT.with_suffix('.png'), dpi=300)
-    print(f'wrote {OUT.relative_to(ROOT)} and .png')
+    print(f'wrote {OUT.name} and .png')
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-# Ported into this bundle 2026-07-20 (RS-005) from ingegneria/fe-batch-lab/cases/abq2ccx_rr.py,
+# Ported into this bundle 2026-07-20 from the FE development lab,
 # the FE dev lab from which code/ was extracted. Unchanged. It is the generator behind panel (A)
 # of the pitfalls figure (experiments/exp15_panelA_weakchop.py). stdlib-only (re).
 """Translate the industrial composite-panel Abaqus decks (Composite_*.inp,

@@ -1,10 +1,10 @@
 """Panel (A) della figura dei pitfall: il weak-material "chop" ROMPE il buckling.
 
-Generatore in-bundle del pannello (A), portato qui il 2026-07-20 (RS-005). Era
+Generatore in-bundle del pannello (A), portato qui il 2026-07-20. Era
 l'ultimo pannello della Fig. 9 senza sorgente dentro `code/`: il modello weak-chop
 (Giacomo: "assegna un materiale dummy/debole ai ply rimossi") vive nel solido
 Abaqus a 14k nodi, non nel guscio dell'ottimizzatore. La macchineria di traduzione
-Abaqus->ccx ora e' in `fe/abq2ccx_rr.py` (portata da fe-batch-lab); questo script
+Abaqus->ccx ora e' in `fe/abq2ccx_rr.py` (portata dal lab di sviluppo FE); questo script
 rigenera i quattro punti dallo stesso deck.
 
 La tesi del pannello: con filler debole (`layer_weak` = `layer`/100) i ply molli

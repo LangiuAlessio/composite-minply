@@ -162,7 +162,7 @@ def main() -> None:
     # sotto la meta': li' il solutore restituisce un altro autovalore. E' il failure mode 4 del
     # paper, che scatta sul deck della campagna, e il confine fra i due regimi sta fra 0.5x e 1.0x.
     # La campagna gira a 1.0x, dentro il regime sano — che e' cio' che il paper afferma quando dice
-    # che i design consegnati riscalano a 10.00000.
+    # che i design consegnati tengono l'invariante fra carico nominale e doppio.
     coppie_sane = [bf_a_carico(seq, 1.0), bf_a_carico(seq, 2.0)]
     e_s2, m_s2 = check_scale_invariant(coppie_sane)
     scala_sopra = 0.25

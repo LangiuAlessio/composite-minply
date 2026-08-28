@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
-# Run an experiment of this bundle on `head` (32 cores, CalculiX 2.21) instead of the laptop.
+# Run an experiment of this bundle on a remote compute host instead of the laptop.
 #
 # The FE jobs are small but relentless, and there is no reason to cook the Mac's battery with
-# them. head has the same ccx version, so the numbers are the same: exp9 reproduces on both
-# hosts to the last printed digit (which is itself worth knowing for a paper about
-# reproducibility).
+# them. With the same ccx version the numbers are the same: exp9 reproduces on both hosts to the
+# last printed digit, which is itself worth knowing for a paper about reproducibility.
 #
-#   ./code/run_on_head.sh experiments.exp9_experimental_validation
-#   ./code/run_on_head.sh experiments.exp6_haftka_walsh
+#   ./run_on_head.sh experiments.exp9_experimental_validation
+#   ./run_on_head.sh experiments.exp6_haftka_walsh
 #
 # Results are copied back into code/experiments/_out/ so the local tree stays authoritative.
 set -euo pipefail
@@ -17,7 +16,9 @@ MODULE="${1:?usage: run_on_head.sh <python.module.path>}"
 # 2026-08-26 per il rilascio pubblico, perche' un tool che si pubblica non deve portarsi dietro
 # la topologia di rete di chi lo ha scritto.
 REMOTE="${CCX_REMOTE:?set CCX_REMOTE to an ssh host with CalculiX installed, e.g. CCX_REMOTE=mybox}"
-RDIR="${CCX_REMOTE_DIR:-'~/composite-opt-code'}"
+# ⚠️ Niente apici dentro ${:-}: restavano LETTERALI, la tilde non veniva espansa dal remoto e il
+# `cd` falliva per chiunque non impostasse CCX_REMOTE_DIR -- cioe' col default, sempre.
+RDIR="${CCX_REMOTE_DIR:-composite-opt-code}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "==> sync -> ${REMOTE}"

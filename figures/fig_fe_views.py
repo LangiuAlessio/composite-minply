@@ -332,8 +332,14 @@ def save(fig, stem: str, paper_name: str | None = None, crop_margin: int = 7) ->
             shutil.move(str(cropped), str(pdf))
     else:
         print('  (pdfcrop assente: PDF non ritagliato, la figura stampera\' piu\' piccola)')
-    if paper_name:                       # il file che il manoscritto include davvero
+    # ⚠️ La copia accanto al manoscritto si fa SOLO se il manoscritto c'e'. Prima era
+    # incondizionata: in un clone di composite-minply `ROOT.parent` e' la directory SOPRA il clone,
+    # e lo script ci scriveva dentro tre PDF, sporcando il filesystem di chi lo esegue. Stessa
+    # classe del difetto `parents[2]` corretto negli altri tre script delle figure.
+    if paper_name and (ROOT.parent / 'composite_opt.bib').is_file():
         shutil.copyfile(pdf, ROOT.parent / paper_name)
+    elif paper_name:
+        print(f'  (fuori dal monorepo: {paper_name} non copiato, resta in figures/_out/)')
     print(f'  wrote {pdf.name} + {png.name} (600 dpi)'
           + (f' -> {paper_name}' if paper_name else ''))
 

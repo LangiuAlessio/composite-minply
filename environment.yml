@@ -8,7 +8,7 @@ dependencies:
   - scipy               # Kruskal-Wallis / Mann-Whitney for the optimiser comparison
   - pandas
   # The three figure scripts in figures/, which reproduce.sh runs. NOT pinned, but be aware that
-  # the tick FORMATTING of Figure 8 is version-sensitive: matplotlib 3.11 renders its log axis as
+  # the tick FORMATTING of fig:bench is version-sensitive: matplotlib 3.11 renders its log axis as
   # 10^-1 / 2x10^0 where the published figure shows 0.5 / 2. The data and the canaries are
   # unaffected (verified 2026-07-25); only the axis labels move.
   - matplotlib

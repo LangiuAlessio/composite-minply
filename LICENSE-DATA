@@ -1,0 +1,15 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+Applies to the result artefacts in `data/`: the JSON records of the reported campaigns and the
+generated LaTeX table, plus the three Abaqus `.dat` result files.
+
+The code is under the MIT licence; see LICENSE.
+
+CalculiX (`ccx`) is a separate work, distributed by its own authors under the GNU General Public
+License. This repository neither includes nor modifies it: it invokes an installed binary.
+
+Note on the Abaqus result files. `data/exp1_abaqus_axial661.dat`, `data/exp1_abaqus_combined661.dat`
+and `data/exp29_abaqus_freq661.dat` are outputs of Abaqus, produced on the deck this bundle
+generates. They are included so that the commercial side of the validation table can be read
+without an Abaqus licence.

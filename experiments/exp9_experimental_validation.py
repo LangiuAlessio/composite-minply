@@ -309,7 +309,7 @@ def p_critical(bm: Benchmark, nelx: int, nely: int) -> float:
 
     So the rule is: keep the reference load below the critical one. The manuscript's own
     campaign runs at BLF ~ 4 and is therefore in the safe region -- but by luck, not by
-    design, and that is exactly the kind of silent FE failure mode Section 3.8 is about.
+    design, and that is exactly the kind of silent FE failure mode the verification-layer section is about.
     The screen is now explicit: pick the reference load from the expected magnitude, and
     assert afterwards that the factor came out above 1.
     """

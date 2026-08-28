@@ -77,7 +77,7 @@ def setup_logging(log_dir=None, max_mb=None, backups=None,
 # optimisation gets a hard LOCAL ceiling on wall-clock and on FE evaluations. The S8R
 # panel costs ~1-3 s/eval; a GA case is ~9 ply-steps x pop*(gens+1) ~= 540 evals, a few
 # minutes. Defaults leave generous head-room, then abort. A search that legitimately
-# needs more is, by policy, an ailab cluster job (RR_TARGET=ailab lifts the caps), not
+# needs more is, by policy, a cluster job (COMPOSITE_TARGET=cluster lifts the caps), not
 # a laptop job -- that is exactly what melted the Mac for 13 h.
 # Single definition of the load multiplier applied to the nominal case loads. Both this
 # module and optimisers/metaheuristics.py read it: they used to carry divergent defaults
@@ -100,14 +100,14 @@ class Budget:
     Env overrides (used when the matching arg is None):
       RR_MAX_SECONDS_PER_CASE  wall-clock ceiling, seconds   (default 1200 = 20 min)
       RR_MAX_EVALS_PER_CASE    FE-evaluation ceiling          (default 2000)
-      RR_TARGET=ailab          lift all caps (cluster run)
+      COMPOSITE_TARGET=cluster          lift all caps (cluster run)
       RR_ALLOW_LONG=1          lift all caps (explicit opt-in)
     """
 
     def __init__(self, max_seconds=None, max_evals=None, allow_long=None,
                  clock=time.monotonic):
         if allow_long is None:
-            allow_long = (os.environ.get("RR_TARGET", "").lower() == "ailab"
+            allow_long = (os.environ.get("COMPOSITE_TARGET", "").lower() == "cluster"
                           or os.environ.get("RR_ALLOW_LONG", "0") == "1")
         if max_seconds is None:
             max_seconds = float(os.environ.get("RR_MAX_SECONDS_PER_CASE", "1200"))
@@ -305,7 +305,7 @@ def make_ccx_deck(seq, case, mesh=None):
     to the published campaign). Pass mesh=(nx,ny) or (nx,ny,lx,ly) for a mesh-refinement sweep
     (panel C of the pitfalls figure): nodes, elements, clamp, tip and CLOAD are ALL rebuilt from
     the same (nx,ny,lx,ly), so the deck stays internally consistent at any resolution -- the
-    freeze that made a runtime NX,NY change divide by zero (RS-005, 2026-07-20) is gone."""
+    freeze that made a runtime NX,NY change divide by zero (2026-07-20) is gone."""
     if mesh is None:
         ID, NODES, ELEMS, nx, ny, lx, ly = _ID, _NODES, _ELEMS, NX, NY, LX, LY
     else:
@@ -580,7 +580,7 @@ def optimise_case_ga(name, case, alpha, ply_counts, pool, scale, seed=0, budget=
     threshold AND the static constraints (disp<1.1, in-plane sigma<700) wins.
 
     `budget` (a Budget) is checked at each ply-count step: if the local cap is blown the
-    case aborts with an error pointing at ailab, instead of grinding on for hours."""
+    case aborts with an error pointing at cluster, instead of grinding on for hours."""
     rng = random.Random(seed)
     guided = os.environ.get("GUIDELINES", "0") == "1"
     sload = {**STATIC_LOAD, "axial": STATIC_LOAD["axial"] * scale,
@@ -590,8 +590,8 @@ def optimise_case_ga(name, case, alpha, ply_counts, pool, scale, seed=0, budget=
             reason = budget.overrun()
             if reason:
                 log.error("%s: optimisation budget exhausted (%s) at N=%d -- aborting this "
-                          "case locally. If a longer search is expected, dispatch to ailab "
-                          "(RR_TARGET=ailab), not this machine.", name, reason, n)
+                          "case locally. If a longer search is expected, dispatch to cluster "
+                          "(COMPOSITE_TARGET=cluster), not this machine.", name, reason, n)
                 return dict(name=name, n_plies=None, seq=None, budget_exceeded=True)
             budget.tick(EVALS_PER_PLY_STEP)
         bf, seq = ga_best(case, n, alpha, pool, rng, guided=guided)
@@ -628,8 +628,8 @@ def optimise_case(name, case, alpha, ply_counts, ncand, pool, seed=0, budget=Non
             reason = budget.overrun()
             if reason:
                 log.error("%s: optimisation budget exhausted (%s) at N=%d -- aborting this "
-                          "case locally. If a longer search is expected, dispatch to ailab "
-                          "(RR_TARGET=ailab), not this machine.", name, reason, n)
+                          "case locally. If a longer search is expected, dispatch to cluster "
+                          "(COMPOSITE_TARGET=cluster), not this machine.", name, reason, n)
                 return dict(name=name, n_plies=None, bf=None, seq=None, budget_exceeded=True)
             budget.tick(ncand)
         cands = []
@@ -824,6 +824,6 @@ if __name__ == "__main__":
                   f"sx={r['sx']:.0f} sy={r['sy']:.0f} delamQ={r.get('delam_Q',0):.4f} | seq={r['seq']}")
         elif r.get("budget_exceeded"):
             print(f"{name}: ABORTED — optimisation budget exceeded (see ERROR log); "
-                  f"dispatch to ailab for a longer search")
+                  f"dispatch to cluster for a longer search")
         else:
             print(f"{name}: INFEASIBLE up to {plies[-1]} ply (buckling or static)")

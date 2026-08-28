@@ -7,7 +7,7 @@
    -45
   ],
   "thickness_mm": 0.3,
-  "provenance": "crop_layers(k=3), 928-node sub-model, sotto il cap di 1000 nodi di Abaqus LE; fe-batch-lab FINDINGS:82"
+  "provenance": "crop_layers(k=3), 928-node sub-model, sotto il cap di 1000 nodi di Abaqus LE; development log"
  },
  "loads": [
   -1000.0,

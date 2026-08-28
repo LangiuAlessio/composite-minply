@@ -37,7 +37,11 @@ run() {   # run <module> <what it reproduces>
   local t0 t1 rc
   t0=$(date +%s)
   set +e
-  python3 -u -m "$1"
+  # ⚠️ NON fra virgolette: uno step puo' portarsi dietro i propri argomenti (exp9 vuole `--all`,
+  # senza il quale non scrive exp9_all_sources.json e la figura che lo legge fallisce). Quotato,
+  # `-m` riceverebbe "modulo --all" come unico nome di modulo.
+  # shellcheck disable=SC2086
+  python3 -u -m $1
   rc=$?
   set -e
   t1=$(date +%s)
@@ -54,30 +58,30 @@ run() {   # run <module> <what it reproduces>
 
 # Steps whose only blocker on a clean clone is the non-redistributable deck. A plain space-delimited
 # string, not an associative array: macOS still ships bash 3.2, where `declare -A` is a syntax error.
-NEEDS_DECK="experiments.exp15_panelA_weakchop experiments.exp13_solid_buckling_spurious"
+NEEDS_DECK="experiments.exp15_panelA_weakchop"
 
 QUICK=(
-  "experiments.exp1_abaqus_validation|Table 7 (tab:validation), buckling rows"
+  "experiments.exp1_abaqus_validation|tab:validation, buckling rows"
   "experiments.exp2_crossply_baseline|60-ply cross-ply anchor (VALIDATION.md)"
-  "experiments.exp6_haftka_walsh|Figure 8 (fig:bench), Haftka-Walsh global optima"
+  "experiments.exp6_haftka_walsh|fig:bench, Haftka-Walsh global optima"
   "experiments.exp7_fe_certification|exhaustive N=8 certification (Section 3.5)"
   "experiments.exp8_robustness|buckling-evaluator robustness (Section 3.5)"
-  "experiments.exp9_experimental_validation|Table 8 (tab:experimental) + Figure 7 (fig:experimental)"
-  "experiments.exp14_isotropic_canaries|isotropic canaries (Section 3.8)"
-  "experiments.exp18_reference_load_screen|reference-load screen, 4th failure mode (Section 3.8) + abstract"
-  "experiments.exp15_panelA_weakchop|Figure 9, panel A"
-  "experiments.exp13_solid_buckling_spurious|Figure 9, panel B"
-  "figures.fig_validation_parity|Figure 7 (fig:experimental)"
-  "figures.fig_benchmark_haftka_walsh|Figure 8"
-  "figures.fig_pitfalls|Figure 9"
+  "experiments.exp9_experimental_validation --all|tab:experimental + fig:experimental"
+  "experiments.exp14_isotropic_canaries|isotropic canaries (the verification-layer section)"
+  "experiments.exp18_reference_load_screen|reference-load screen, 4th failure mode (the verification-layer section) + abstract"
+  "experiments.exp15_panelA_weakchop|fig:neg, panel A"
+  "experiments.exp13_solid_buckling_spurious|fig:neg, panel B"
+  "figures.fig_validation_parity|fig:experimental"
+  "figures.fig_benchmark_haftka_walsh|fig:bench"
+  "figures.fig_pitfalls|fig:neg"
 )
 
 FULL=(
-  "experiments.exp3_minply_sequences|Tables 9-10 (tab:feasible, tab:explicitseq) + Table 11 (tab:axialsweep)"
+  "experiments.exp3_minply_sequences|tab:feasible, tab:explicitseq + tab:axialsweep"
   "experiments.exp3b_c1_freq_constrained|the C1 48-ply design under the frequency constraint"
-  "experiments.exp16_minply_sweep|Table 12 (tab:minply) + data/tab_minply_generated.tex"
-  "experiments.exp19_budget_convergence|the N=48 budget-convergence check of Section 3.6 (~46 min, 3 seeds)"
-  "experiments.exp4_optimiser_comparison|Table 13 (tab:full), 30-seed GA/ACO/PSO comparison"
+  "experiments.exp16_minply_sweep|tab:minply + data/tab_minply_generated.tex"
+  "experiments.exp19_budget_convergence|the N=48 budget-convergence check of the budget-convergence subsection (~46 min, 3 seeds)"
+  "experiments.exp4_optimiser_comparison|tab:full, 30-seed GA/ACO/PSO comparison"
 )
 
 main() {

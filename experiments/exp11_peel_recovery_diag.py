@@ -5,7 +5,7 @@
 mesh), il che sembrava un recupero che si degrada proprio dove il pannello (C)
 della figura dei pitfall fa il suo punto.
 
-Non lo e'. Tre misure, 2026-07-20 (RS-005):
+Non lo e'. Tre misure, 2026-07-20:
 
  1. il massimo del residuo sta SEMPRE a j=0, cioe' esattamente sul bordo libero
     dove la soluzione esatta e' singolare (Pipes-Pagano);

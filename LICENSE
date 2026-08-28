@@ -19,12 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-The result artefacts under `data/` and `experiments/_out/` (JSON records of the
-reported campaigns) are released under the Creative Commons Attribution 4.0
-International licence (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/.
-
-CalculiX (`ccx`) is a separate work, distributed by its own authors under the
-GNU General Public License; this repository neither includes nor modifies it.

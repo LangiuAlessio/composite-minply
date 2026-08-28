@@ -18,7 +18,7 @@ to mid-plane) is reported; the full laminate is the half followed by its mirror,
 Method: budget-converged guided genetic algorithm (population 40, 24 generations, two random
 seeds, best taken). Buckling on the validated 2D S8R shell; strength/displacement on the 3D
 solid; delamination by equilibrium interlaminar-stress recovery. All FE solves use CalculiX
-(ccx). Designed to run on the ailab k3s control node (gw1, 32 cores).
+(ccx). Designed to run on a 32-core compute node.
 
 WARNING (2026-07-20 pre-submission audit, finding A1): this script DOES NOT EVALUATE THE
 FIRST NATURAL FREQUENCY, although the manuscript declares f1 > 600 Hz as Constraint 4. The
@@ -29,13 +29,11 @@ against the stated constraint. C2 and C3 pass (617-688 Hz). The corrected C1 des
 plies is produced by exp3b_c1_freq_constrained.py, which imposes the frequency gate. Do not
 re-run this script to regenerate the C1 row.
 
-NOTE (re-validation finding to confirm): the load magnitudes live in rr_optimiser.CASES
-(C1 axial=-2400, C2 side=4900, C3 axial=-1500/side=4900). These differ from the nominal
-values printed in the manuscript's load-case table -- reconcile before publication.
+The load magnitudes match the manuscript's load-case table (checked 2026-07-22).
 
-Usage (on gw1):
-    MAMBA_ROOT_PREFIX=$HOME/micromamba PYTHONPATH=$HOME/fe-batch-lab CCX_BIN=ccx \\
-        $HOME/bin/micromamba run -n fe python experiments/exp3_minply_sequences.py
+Usage (on a compute node):
+    CCX_BIN=ccx \\
+        python -m experiments.exp3_minply_sequences
 """
 from __future__ import annotations
 

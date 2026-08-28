@@ -4,7 +4,7 @@ Il paper attribuisce il 298x al tipo di elemento ("element-type mis-prediction: 
 under-resolved C3D8I solid mis-predicts buckling by orders of magnitude"). Ma il numeratore
 di quel rapporto e' un ccx **~1.0**, che e' esattamente la firma che il pannello **(A)** della
 stessa figura usa per dimostrare che un autovalore e' SPURIO, e che le note interne
-(`fe-batch-lab/docs/RR_composite_optimiser_FINDINGS.md`) chiamano "the recurring ~1.0 spurious
+(the development log) chiamano "the recurring ~1.0 spurious
 eigenvalue". Le due spiegazioni non sono la stessa cosa:
 
   * LOCKING          -> l'autovalore e' vero ma calcolato su una rigidezza sbagliata: e' un
@@ -65,7 +65,7 @@ from fe.interlaminar import CCX, PLY_T, make_solid_buckle_deck, solid_buckling_f
 
 FULL = [0, 45, -45, 90] * 15      # pannello di validazione, 60 ply / 6.0 mm
 CROP3 = FULL[:3]                  # crop_layers(k=3): 3 ply / 0.3 mm, il deck del 298x
-ABAQUS_CROP_BF = 0.00336          # Abaqus LE sul nodo head (fe-batch-lab FINDINGS:82)
+ABAQUS_CROP_BF = 0.00336          # Abaqus LE su un nodo di calcolo (development log)
 LOADS = [-1000.0, -100.0, -10.0, -1.0]
 INVARIANCE_GATE = 100.0           # % di dispersione dell'invariante BF*|carico| sopra cui e' spurio
 OUT = Path(__file__).resolve().parents[1] / 'data' / 'exp13_solid_buckling_spurious.json'
@@ -189,7 +189,7 @@ def main() -> None:
         'question': "il 298x del pannello (B) e' locking del C3D8I o un autovalore spurio?",
         'crop_deck': {'sequence': CROP3, 'thickness_mm': 0.3,
                       'provenance': 'crop_layers(k=3), 928-node sub-model, sotto il cap di 1000 '
-                                    'nodi di Abaqus LE; fe-batch-lab FINDINGS:82'},
+                                    'nodi di Abaqus LE; development log'},
         'loads': LOADS, 'invariance_gate_pct': INVARIANCE_GATE,
         'ccx': os.environ.get('CCX_BIN', 'ccx_2.21'), **res}, indent=1))
     print(f"\nscritto {OUT}")

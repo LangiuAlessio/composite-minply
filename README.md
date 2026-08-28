@@ -38,10 +38,10 @@ like to hear about it (contact below).
 
 This bundle is also the reproducibility code for the paper *An open-source validated workflow for
 minimum-thickness composite laminate design under buckling constraints* (Langiu, Rubino, Canale):
-every number in the paper regenerates from the scripts listed in the tables below.
+every number in the paper regenerates from the scripts listed in the tables below, but for the two exceptions stated under "What cannot run from a clean clone".
 
-Licence: **MIT** for the code, **CC BY 4.0** for the result artefacts under `data/` and
-`experiments/_out/` (see `LICENSE`). CalculiX itself is GPL software distributed by its own authors and
+Licence: **MIT** for the code (`LICENSE`), **CC BY 4.0** for the result artefacts under `data/`
+(`LICENSE-DATA`). CalculiX itself is GPL software distributed by its own authors and
 is neither included nor modified here.
 
 ## Install
@@ -75,32 +75,35 @@ cause, rather than silently averaged away. Buckling and interlaminar solves are 
 `OMP_NUM_THREADS=1` on purpose (threaded buckling is unreliable below ccx 2.21); parallelism comes from
 evaluating independent candidates concurrently, which does not change the search.
 
-### Table / figure → script map
+### Result → script map
+
+The left column names the result, not its number: table and figure numbers change with the journal's
+format, the `\label` does not.
 
 | Paper item | Label | Script | Artefact |
 |---|---|---|---|
-| Figures 1-3 | `fig:buck`, `fig:freq`, `fig:stress` | `figures/fig_fe_views.py` [^onescript] | `figures/_out/fig_ref_*.pdf` [^prov] |
-| Table 6, first block | `tab:validation` | `experiments/exp1_abaqus_validation.py` | printed; see `VALIDATION.md` |
-| Table 6, modal row | `tab:validation` | `experiments/exp29_modal_cross_solver.py` | `data/exp29_modal_cross_solver.json` [^modal] |
-| Table 6, cross-ply block | `tab:validation` | `experiments/exp2_crossply_baseline.py` (all four comparisons, including the 6.9% torsion case) | printed; see `VALIDATION.md` |
-| Table 7, Figure 5 | `tab:experimental`, `fig:experimental` | `experiments/exp9_experimental_validation.py` → `figures/fig_validation_parity.py` | `experiments/_out/exp9/` |
-| Tables 8-9 | `tab:feasible`, `tab:explicitseq` | `experiments/exp3_minply_sequences.py` (+ `exp3b` for the C1 row) | `data/exp3_minply_sequences.json`, `data/exp3b_c1_freq_constrained.json` |
-| Table 10 | `tab:axialsweep` | `experiments/exp3_minply_sequences.py` (`sweeps.set2.c1_axial`) | `data/exp3_minply_sequences.json` |
-| Table 11 | `tab:minply` | `experiments/exp16_minply_sweep.py` | `data/exp16_minply_sweep.json`, `data/tab_minply_generated.tex` [^generated] |
-| Table 12 | `tab:full` | `experiments/exp4_optimiser_comparison.py` | `data/exp4_optimiser_comparison.json` [^exp4] |
-| Figure 6 | `fig:bench` | `experiments/exp6_haftka_walsh.py` → `figures/fig_benchmark_haftka_walsh.py` | `data/exp6_haftka_walsh.json` |
-| Figure 7, panel A | `fig:neg` | `experiments/exp15_panelA_weakchop.py` → `figures/fig_pitfalls.py` | `data/exp15_panelA_weakchop.json` |
-| Figure 7, panel B | `fig:neg` | `experiments/exp13_solid_buckling_spurious.py` → `figures/fig_pitfalls.py` | `data/exp13_solid_buckling_spurious.json` |
+| FE reference views | `fig:buck`, `fig:freq`, `fig:stress` | `figures/fig_fe_views.py` [^onescript] | `figures/_out/fig_ref_*.pdf` [^prov] |
+| Validation, first block | `tab:validation` | `experiments/exp1_abaqus_validation.py` | printed; see `VALIDATION.md` |
+| Validation, modal row | `tab:validation` | `experiments/exp29_modal_cross_solver.py` | `data/exp29_modal_cross_solver.json` [^modal] |
+| Validation, cross-ply block | `tab:validation` | `experiments/exp2_crossply_baseline.py` (all four comparisons, including the 6.9% torsion case) | printed; see `VALIDATION.md` |
+| Experimental validation | `tab:experimental`, `fig:experimental` | `experiments/exp9_experimental_validation.py` → `figures/fig_validation_parity.py` | `experiments/_out/exp9/` |
+| Delivered designs | `tab:feasible`, `tab:explicitseq` | `experiments/exp3_minply_sequences.py` (+ `exp3b` for the C1 row) | `data/exp3_minply_sequences.json`, `data/exp3b_c1_freq_constrained.json` |
+| Axial ply-count sweep | `tab:axialsweep` | `experiments/exp3_minply_sequences.py` (`sweeps.set2.c1_axial`) | `data/exp3_minply_sequences.json` |
+| Minimum-ply sweep | `tab:minply` | `experiments/exp16_minply_sweep.py` | `data/exp16_minply_sweep.json`, `data/tab_minply_generated.tex` [^generated] |
+| Optimiser comparison | `tab:full` | `experiments/exp4_optimiser_comparison.py` | `data/exp4_optimiser_comparison.json` [^exp4] |
+| Haftka-Walsh benchmark | `fig:bench` | `experiments/exp6_haftka_walsh.py` → `figures/fig_benchmark_haftka_walsh.py` | `data/exp6_haftka_walsh.json` |
+| Pitfalls, panel A | `fig:neg` | `experiments/exp15_panelA_weakchop.py` → `figures/fig_pitfalls.py` | `data/exp15_panelA_weakchop.json` |
+| Pitfalls, panel B | `fig:neg` | `experiments/exp13_solid_buckling_spurious.py` → `figures/fig_pitfalls.py` | `data/exp13_solid_buckling_spurious.json` |
 | Section 3.5 (certification, robustness) | --- | `experiments/exp7_fe_certification.py`, `exp8_robustness.py` | printed |
-| Section 3.8 (isotropic canaries) | --- | `experiments/exp14_isotropic_canaries.py` | printed |
-| Section 3.8 (fourth failure mode) + abstract | --- | `experiments/exp18_reference_load_screen.py` | `data/exp18_reference_load_screen.json` |
+| the verification-layer section (isotropic canaries) | --- | `experiments/exp14_isotropic_canaries.py` | printed |
+| the verification-layer section (fourth failure mode) + abstract | --- | `experiments/exp18_reference_load_screen.py` | `data/exp18_reference_load_screen.json` |
 | Section 3.6 (budget convergence at N=48) | `sec:sweep` | `experiments/exp19_budget_convergence.py` | `data/exp19_budget_convergence.json` |
-| Section 3.4 (extended orientation set) | `sec:alphabet` | `experiments/exp4_optimiser_comparison.py` (sweeps set1 and set2 in one run) | `data/exp4_optimiser_comparison.json` [^exp4] |
+| the extended-orientation-set subsection | `sec:alphabet` | `experiments/exp4_optimiser_comparison.py` (sweeps set1 and set2 in one run) | `data/exp4_optimiser_comparison.json` [^exp4] |
 
 [^onescript]: One script produces all three: two eigenvalue solves on the S8R shell plus a static
     solve on the C3D8I solid.
 [^prov]: Provenance in `data/fig_fe_views_provenance.json`; a 1% canary on the buckling factor and
-    on the first frequency, against Table 6, refuses to write the figure if it drifts.
+    on the first frequency, against the validation table, refuses to write the figure if it drifts.
 [^generated]: **Both files are written by the run.** The sweep is the generator: the table in the
     paper is regenerated from it, never transcribed.
 [^modal]: The Abaqus side cannot be re-run without a commercial licence, so the Abaqus result
@@ -138,7 +141,7 @@ evaluating independent candidates concurrently, which does not change the search
 > are now stored to four *significant figures*: on a log scale, four decimals turns $6.5\times10^{-6}$
 > into `0.0`.
 
-Tables 1-6 are inputs, not results: they state the load cases, the constraints, the material data and the
+The tables not listed above are inputs, not results: they state the load cases, the constraints, the material data and the
 optimiser settings, and are read from the manuscript, not generated.
 
 Both modal rows of the validation table are reproducible from this bundle: the quasi-isotropic one by
@@ -175,10 +178,10 @@ laminate is the half followed by its mirror.
 |--------|------------|-----------|
 | `experiments/exp1_abaqus_validation.py` | ccx-vs-Abaqus validation deck (Abaqus side is the coauthor's reference) | yes |
 | `experiments/exp2_crossply_baseline.py` | 60-ply cross-ply baseline vs the Abaqus reference | yes |
-| `experiments/exp3_minply_sequences.py`  | the six delivered minimum-ply stacking sequences (paper Table 5) | yes |
+| `experiments/exp3_minply_sequences.py`  | the six delivered minimum-ply stacking sequences (the delivered-designs table) | yes |
 | `experiments/exp4_optimiser_comparison.py` | 30-seed GA/ACO/PSO comparison + restricted-vs-extended alphabet | yes |
 | `experiments/exp6_haftka_walsh.py`      | Haftka-Walsh benchmark: recover 12/12 + 8/8 global optima | no (closed-form) |
-| `experiments/exp7_fe_certification.py`  | exhaustive N=8 certification: GA within 0.51% of the FE global optimum | yes |
+| `experiments/exp7_fe_certification.py`  | exhaustive N=8 certification: GA within 0.51-0.59% over three seeds of the FE global optimum | yes |
 | `experiments/exp8_robustness.py`        | buckling-evaluator robustness (the governing mode is the lowest eigenvalue) | yes |
 
 Run, e.g.:
@@ -212,11 +215,11 @@ follow the reference cases of Canale et al., *The Open Mechanical Engineering Jo
 
 ### What cannot run from a clean clone
 
-Two steps need `decks/Composite_buckling_3.inp`, the Abaqus deck of the industrial reference case, which
-is not versioned in this repository (it is the coauthor's model): `exp15_panelA_weakchop` and
-`exp13_solid_buckling_spurious` (panels A and B of the pitfalls figure). `reproduce.sh` reports them as
-SKIPPED and carries on with the rest; set `RR_DECK` to point at your own copy to run them. Everything
-else in `quick` runs from what is in this repository.
+One step needs `decks/Composite_buckling_3.inp`, the Abaqus deck of the industrial reference case, which
+is not versioned in this repository (it is the coauthor's model): `exp15_panelA_weakchop`, panel (A) of
+the pitfalls figure. `reproduce.sh` reports it as SKIPPED and carries on with the rest; set `RR_DECK` to
+point at your own copy to run it. Panel (B), `exp13_solid_buckling_spurious`, builds its own deck and
+runs from a clean clone. Everything else in `quick` runs from what is in this repository.
 
 The Abaqus side of any cross-solver comparison is likewise not reproducible here: Abaqus is commercial,
 and its numbers are the coauthor's reference runs, quoted in `VALIDATION.md` with their provenance.
@@ -225,28 +228,7 @@ and its numbers are the coauthor's reference runs, quoted in `VALIDATION.md` wit
 
 Declared here so that no gap is silent (audit 2026-07-20, section E):
 
-- **Five figures are the coauthor's Abaqus views**, with no generator script in this repository:
-  `gc_buckling.png`, `gc_freq.png`, `gc_model2d.png`, `gc_model3d.png`, `gc_stress.png`. They are
-  screenshots of the coauthor's models, not data plots; the request to rescale the colour code of
-  one of them (U Magnitude 284.71 -> 1) is still with the coauthor. Every DATA figure in the paper
-  has its generator listed in the tables above.
-- **The 928-node modal crop is no longer used.** It sat behind the frequency row of the industrial
-  case and was derived from a coauthor's Abaqus deck that is not in this bundle. Since 2026-08-26
-  that row is measured instead on the 661-node panel this bundle generates
-  (`exp29_modal_cross_solver.py`), so nothing in the validation table depends on an artefact a
-  reader cannot regenerate.
-- **`data/exp3_minply_sequences.json` mixes two passes, and the reason is a bug that is now
-  fixed.** Its `sweeps` rows all carry `Q: null` and `feasible: false`, including the exact ply
-  counts and buckling factors that the `delivered` block reports as feasible with a real `Q`.
-  The cause was a bare `except Exception: Q = None` around the interlaminar solve in
-  `experiments/exp3_minply_sequences.py`: when the solid solver was unavailable, a solve that
-  never ran was recorded exactly like one that ran and failed, the ascending sweep never met a
-  feasible row, and it therefore ran to the manufacturing cap instead of stopping at the minimum
-  thickness. `delivered` comes from a pass in which the solver was available. The delivered ply
-  counts and buckling factors are the published ones and are unaffected; what the file does not
-  support is the reading of its `sweeps` block as a feasibility scan. The handler now records
-  `delam_error` in the row, prints it, and re-raises unless `EXP3_ALLOW_DELAM_FAILURE=1` is set,
-  so this cannot recur silently; re-running the experiment regenerates a single-pass file.
+- **The three FE reference views are generated in-bundle by `figures/fig_fe_views.py`.
 
 - **The seven "Source's own" values of NASA TP-3007 are verified against the source** (checked
   2026-08-26 on the public NTRS scan, <https://ntrs.nasa.gov/api/citations/19900016761/downloads/19900016761.pdf>).
